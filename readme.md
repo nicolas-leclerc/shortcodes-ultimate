@@ -9,4 +9,4 @@ Real swiss army knife for WordPress.
 * [Documentation](http://support.gndev.info/docs_category/shortcodes-ultimate/)
 * [Page at wordpress.org](http://wordpress.org/plugins/shortcodes-ultimate/)
 
-With this plugin you can easily create buttons, boxes, different sliders and much, much more. Turn your free theme to premium in just a few clicks. Using Shortcodes Ultimate you can quickly and easily retrieve premium themes features and display it on your site. See screenshots for more information.
+With this plugin you can easily create buttons, boxes, different sliders and much, much more. Turn your free theme to premium in just a few clicks. Using Shortcodes Ultimate you can quickly and easily retrieve premium themes features and display it on your site.

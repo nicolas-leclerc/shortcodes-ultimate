@@ -92,6 +92,7 @@ Upgrade normally via your Wordpress admin -> Plugins panel.
 * For security geeks: timthumb.php replaced by native WordPress mechanism
 * For speed-up geeks: completely rewritten assets mechanism. Now css and js files enqueued on page depend on used shortcodes
 * Added new shortcode [posts]. This is awesome and flexible mechanism to display your content in many different ways. [Shortcode documentation](http://support.gndev.info/docs/shortcodes-ultimate-posts/).
+* [GitHub repo](https://github.com/gndev/shortcodes-ultimate).
 
 = 3.9 =
 * More screencasts
