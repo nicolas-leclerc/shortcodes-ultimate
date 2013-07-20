@@ -1,0 +1,225 @@
+=== Shortcodes Ultimate ===
+Contributors: gn_themes
+License: GPL3
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MMA2VA7JDXWDY
+Tags: shortcode, shortcodes, short code, shortcodes, tab, tabs, button, buttons, jquery, box, boxes, toggle, spoiler, column, columns, services, service, pullquote, list, lists, frame, images, image, links, fancy, fancy link, fancy links, fancy buttons, jquery tabs, accordeon, slider, nivo, nivo slider, plugin, admin, photoshop, gallery, bloginfo, list pages, sub pages, navigation, siblings pages, children pages, permalink, permalinks, feed, document, member, members, documents, jcarousel, rss
+Requires at least: 3.4
+Tested up to: 4.0
+Stable tag: 4.0.0
+
+Supercharge your WordPress theme with mega pack of shortcodes
+
+
+== Description ==
+
+[Shortcodes Ultimate](http://shortcodes-ultimate.com/) is WordPress plugin that provides mega pack of shortcodes.
+
+With this plugin you can easily create buttons, boxes, different sliders and much, much more. Turn your free theme to premium in just a few clicks. Using Shortcodes Ultimate you can quickly and easily retrieve premium themes features and display it on your site. See screenshots for more information.
+
+= Features =
+* Shortcodes generator
+* 30+ amazing shortcodes
+* Power of CSS3 transitions
+* [Premium Addons](http://shortcodes-ultimate.com/addons/)
+* Custom CSS editor with syntax highlight
+* Special widget
+
+= Demo video =
+[youtube http://www.youtube.com/watch?v=DR2c266yWEA]
+
+= More videos =
+* [Shortcodes Ultimate Tutorial](http://www.youtube.com/watch?v=IjmaXz-b55I)
+* [How to use special widget](http://www.youtube.com/watch?v=YU3Zu6C5ZfA)
+
+= Requirements =
+* WordPress 3.4+
+* PHP 5.2+
+
+= Got a bug or suggestion? =
+* [Support forums](http://support.gndev.info/shortcodes-ultimate/)
+* [Documentation](http://support.gndev.info/docs/)
+* [Contact form](http://support.gndev.info/feedback/)
+
+= Translations =
+* Ru - [Vladimir Anokhin](http://gndev.info/)
+* Unforunately old translations is incompatible with current version
+
+Have a translation? [Contact author!](http://support.gndev.info/feedback/)
+
+
+== Installation ==
+
+Unzip plugin files and upload them under your '/wp-content/plugins/' directory.
+
+Resulted names will be:
+  './wp-content/plugins/shortcodes-ultimate/*'
+
+Activate plugin at "Plugins" administration page.
+
+[Visit support site](http://support.gndev.info/) for more information
+
+
+== Upgrade Notice ==
+
+Be careful! This is a great update and completely new code!
+
+Upgrade normally via your Wordpress admin -> Plugins panel.
+
+[Visit support site](http://support.gndev.info/) for more information
+
+
+== Screenshots ==
+
+1. Insert shortcode in 3 easy steps.
+2. Heading, spoiler, tabs, quote, button.
+3. Box, note, divider (top), list.
+4. List styles.
+
+
+== Frequently Asked Questions ==
+
+[Visit support site](http://support.gndev.info/) for more information
+
+
+== Changelog ==
+
+= 4.0 =
+* Now, plugin based on [Sunrise Plugin Framework](http://gndev.info/sunrise/)
+* Brand new [Shortcode Generator](http://www.youtube.com/watch?v=DR2c266yWEA)
+* [Official plugin page](http://shortcodes-ultimate.com/) with docs and addons
+* [Shortcodes API](http://support.gndev.info/docs/shortcodes-ultimate-api/)
+* Completely reorganized code. Added and removed some shortcodes
+* For security geeks: timthumb.php replaced by native WordPress mechanism
+* For speed-up geeks: completely rewritten assets mechanism. Now css and js files enqueued on page depend on used shortcodes
+* Added new shortcode [posts]. This is awesome and flexible mechanism to display your content in many different ways. [Shortcode documentation](http://support.gndev.info/docs/shortcodes-ultimate-posts/).
+
+= 3.9 =
+* More screencasts
+* Special widget for shortcodes
+* Small fixes
+* Hebrew translation
+* [Awesome tutorial by Digital Cascade TV](http://www.youtube.com/watch?v=IjmaXz-b55I)
+* Partners section on settings page
+* Generator select improved with [Chosen](http://harvesthq.github.com/chosen/)
+* Farbtastic color picker
+
+= 3.8 (security release) =
+* 2 new translations (Sk, Lt)
+* Donate button in control panel
+* Updated timthumb.php (version 2.8.10)
+* Added 2 useful screencasts
+
+= 3.7 =
+* Complete support for nested shortcodes. Check the FAQ page.
+* New shortcode [label]
+* New style for buttons [button style="5"]
+* Fixed images ordering for [custom_gallery], [jcarousel] and [nivo_slider]
+
+= 3.6 =
+* Descriptions for [custom_gallery]
+* Custom options for jwPlayer
+* Fixed size option for sliders and gallery
+
+= 3.5 =
+* New shortcode [accordion] for muliple spoilers
+* Improved spoiler shortcode (check settings page)
+* Multiple tabs bugfix
+* Authors can also use shortcode generator
+* Nested shortcodes: spoiler, column, tabs, box, note
+
+= 3.4 =
+* Belarusian translation
+* New shortcode [dropcap]
+
+= 3.3 =
+* Changed: [nivo_slider] and [jcarousel] (see docs in console)
+* New shortcode: [custom_gallery]
+* New parameter: [members login="0|1"]
+* New shortcode: guests
+* German translation
+
+= 3.0 =
+* Button for WYSIWIG editor (search it near Upload/Insert buttons)
+* New shortcode: private (private notes for editors)
+* Patched and secure timthumb.php
+
+= 2.7 =
+* French translation
+* Fixed for work with new jQuery 1.6 in WP 3.2
+
+= 2.5 =
+* Theme integration
+
+= 2.4 =
+* New shortcode: jcarousel
+
+= 2.3 =
+* New admin page: Demo
+
+= 2.2 =
+* New shortcode: document
+* New shortcode: members
+* New shortcode: feed
+* New attr: link="caption" for [nivo_slider]
+* New attr: p for [subpages]
+* New tabs style (style=3)
+
+= 2.1 =
+* New option: disable any script
+* New option: disable any stylesheet
+* New attribute for column shortcode - style
+* New attribute for spoiler shortcode - style
+
+= 2.0 =
+* New shortcode: menu
+* New shortcode: subpages
+* New shortcode: siblings
+* Some admin fixes
+* New button attribute - class
+* New button attribute - target
+* Different tabs styles (1 old + 1 new)
+
+= 1.9 =
+* New shortcode: permalink
+* New shortcode: bloginfo
+
+= 1.8 =
+* Some small additions
+* Ajax admin page
+* No-js compatibility
+* Multiple tabs support
+
+= 1.7 =
+* Improved settings page design
+* Added shortcode nivo_slider
+* Added shortcode photoshop
+
+= 1.6 =
+* New admin panel
+* Custom CSS editor with syntax hughlight
+* Small fixes
+* Added donation forms
+
+= 1.5 =
+* Added option "Compatibility mode"
+* Added new button styles
+* Added new list styles
+* Added new shortcode media
+* Added new shortcode table
+
+= 1.4 =
+* Added shortcode "Fancy link"
+
+= 1.3 =
+* Some fixes
+
+= 1.2 =
+* Localization support
+
+= 1.1 =
+* Added options page
+* Fixed options saving
+
+= 1.0 =
+* Initial release
+
