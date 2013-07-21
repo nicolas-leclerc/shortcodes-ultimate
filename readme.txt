@@ -12,15 +12,15 @@ Supercharge your WordPress theme with mega pack of shortcodes
 
 == Description ==
 
-[Shortcodes Ultimate](http://shortcodes-ultimate.com/) is WordPress plugin that provides mega pack of shortcodes.
+[Shortcodes Ultimate](http://gndev.info/shortcodes-ultimate/) is WordPress plugin that provides mega pack of shortcodes.
 
 With this plugin you can easily create buttons, boxes, different sliders and much, much more. Turn your free theme to premium in just a few clicks. Using Shortcodes Ultimate you can quickly and easily retrieve premium themes features and display it on your site. See screenshots for more information.
 
 = Features =
-* Shortcodes generator
+* Shortcodes Generator
 * 30+ amazing shortcodes
 * Power of CSS3 transitions
-* [Premium Addons](http://shortcodes-ultimate.com/addons/)
+* [Addons](http://gndev.info/plugins/)
 * Custom CSS editor with syntax highlight
 * Special widget
 
@@ -33,18 +33,22 @@ With this plugin you can easily create buttons, boxes, different sliders and muc
 
 = Requirements =
 * WordPress 3.4+
-* PHP 5.2+
+* PHP 5.1+
 
 = Got a bug or suggestion? =
-* [Support forums](http://support.gndev.info/shortcodes-ultimate/)
-* [Documentation](http://support.gndev.info/docs/)
+* [Support forum](http://wordpress.org/support/plugin/shortcodes-ultimate/)
+* [Documentation](http://support.gndev.info/docs_category/shortcodes-ultimate/)
 * [Contact form](http://support.gndev.info/feedback/)
 
-= Translations =
-* Ru - [Vladimir Anokhin](http://gndev.info/)
+= Bundled translations =
+* Ru, [Vladimir Anokhin](http://gndev.info/)
 * Unforunately old translations is incompatible with current version
 
-Have a translation? [Contact author!](http://support.gndev.info/feedback/)
+Have a translation? [Drop some words to Vladimir Anokhin](http://support.gndev.info/feedback/)
+
+= Credits =
+* Thanks to Vladimir Kharlampidi for the great [Swiper](http://www.idangero.us/sliders/swiper/) slider
+
 
 
 == Installation ==
@@ -70,10 +74,11 @@ Upgrade normally via your Wordpress admin -> Plugins panel.
 
 == Screenshots ==
 
-1. Insert shortcode in 3 easy steps.
-2. Heading, spoiler, tabs, quote, button.
-3. Box, note, divider (top), list.
-4. List styles.
+1. Generator button
+2. Shortcode Generator
+3. Unlimited buttons. You've never that buttons before!
+4. Tabs, spoilers, quotes/testimonials, boxes, notes
+5. Touch-enabled slider and carousel, custom gallery
 
 
 == Frequently Asked Questions ==
@@ -85,14 +90,14 @@ Upgrade normally via your Wordpress admin -> Plugins panel.
 
 = 4.0 =
 * Now, plugin based on [Sunrise Plugin Framework](http://gndev.info/sunrise/)
-* Brand new [Shortcode Generator](http://www.youtube.com/watch?v=DR2c266yWEA)
-* [Official plugin page](http://shortcodes-ultimate.com/) with docs and addons
+* Brand new Shortcode Generator, [demo video](http://www.youtube.com/watch?v=DR2c266yWEA)
+* [Official plugin page](http://gndev.info/shortcodes-ultimate/) with docs and addons
 * [Shortcodes API](http://support.gndev.info/docs/shortcodes-ultimate-api/)
 * Completely reorganized code. Added and removed some shortcodes
 * For security geeks: timthumb.php replaced by native WordPress mechanism
 * For speed-up geeks: completely rewritten assets mechanism. Now css and js files enqueued on page depend on used shortcodes
-* Added new shortcode [posts]. This is awesome and flexible mechanism to display your content in many different ways. [Shortcode documentation](http://support.gndev.info/docs/shortcodes-ultimate-posts/).
-* [GitHub repo](https://github.com/gndev/shortcodes-ultimate).
+* Added new shortcode [posts]. This is awesome and flexible mechanism to display your content in many different ways
+* [GitHub repo](https://github.com/gndev/shortcodes-ultimate). Now you can easily fork and modify best plugin in the world (:
 
 = 3.9 =
 * More screencasts

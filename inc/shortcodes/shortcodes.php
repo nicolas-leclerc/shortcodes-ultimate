@@ -168,7 +168,7 @@
 			'cite' => false,
 			'url' => false
 			), $atts );
-		$cite_url = ( $atts['url'] && $atts['cite'] ) ? '<a href="' . $atts['url'] . '">' . $atts['cite'] . '</a>'
+		$cite_link = ( $atts['url'] && $atts['cite'] ) ? '<a href="' . $atts['url'] . '">' . $atts['cite'] . '</a>'
 				: $atts['cite'];
 		$cite = ( $atts['cite'] ) ? '<span class="su-quote-cite">&mdash; ' . $cite_link . '</span>'
 				: '';
@@ -325,8 +325,9 @@
 		// CSS rules for <span> tag
 		$span_rules = array(
 			'color' => $atts['color'],
-			'padding' => round( ( $atts['size'] ) + 2 ) . 'px ' . round( ( ( $atts['size'] * 3 ) + 10 ) ) . 'px',
+			'padding' => ( $atts['icon'] ) ? round( ( $atts['size'] ) / 2 + 4 ) . 'px ' . round( $atts['size'] * 2 + 10 ) . 'px' : '0px ' . round( $atts['size'] * 2 + 10 ) . 'px',
 			'font-size' => $styles['size'] . 'px',
+			'line-height' => ( $atts['icon'] ) ? round( $styles['size'] * 1.5 ) . 'px' : round( $styles['size'] * 2 ) . 'px',
 			'border-color' => su_hex_shift( $atts['background'], 'lighter', 30 ),
 			'border-radius' => $radius,
 			'-moz-border-radius' => $radius,
@@ -338,8 +339,8 @@
 
 		// CSS rules for <img> tag
 		$img_rules = array(
-			'max-width' => round( $styles['size'] * 1.5 ) . 'px',
-			'max-height' => round( $styles['size'] * 1.5 ) . 'px'
+			'width' => round( $styles['size'] * 1.5 ) . 'px',
+			'height' => round( $styles['size'] * 1.5 ) . 'px'
 		);
 
 		// Create style attr value for <a> tag
