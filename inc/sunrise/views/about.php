@@ -1,9 +1,9 @@
 <div id="su-about-screen">
 	<h1><?php _e( 'Welcome to Shortcodes Ultimate', $this->textdomain ); ?> <small><?php _e( 'A real swiss army knife for WordPress', $this->textdomain ); ?></small></h1>
 	<div id="su-links">
-		<a href="http://shortcodes-ultimate.com/" target="_blank"><strong><?php _e( 'Project homepage', $this->textdomain ); ?></strong></a>
+		<a href="http://gndev.info/shortcodes-ultimate/" target="_blank"><strong><?php _e( 'Project homepage', $this->textdomain ); ?></strong></a>
 		<span></span>
-		<a href="http://shortcodes-ultimate.com/addons/" target="_blank"><?php _e( 'Add-ons', $this->textdomain ); ?></a>
+		<a href="http://gndev.info/plugins/" target="_blank"><?php _e( 'Add-ons', $this->textdomain ); ?></a>
 		<span></span>
 		<a href="http://support.gndev.info/docs_category/shortcodes-ultimate/" target="_blank"><?php _e( 'Documentation', $this->textdomain ); ?></a>
 		<span></span>

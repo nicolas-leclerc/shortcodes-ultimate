@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gn_themes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-21 02:45+0300\n"
-"PO-Revision-Date: 2013-07-21 02:45+0300\n"
+"POT-Creation-Date: 2013-07-22 04:02+0300\n"
+"PO-Revision-Date: 2013-07-22 04:02+0300\n"
 "Last-Translator: Vladimir Anokhin <ano.vladimir@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -992,7 +992,7 @@ msgid "Service"
 msgstr "Услуга"
 
 #: inc/shortcodes/data.php:485
-#: inc/shortcodes/shortcodes.php:397
+#: inc/shortcodes/shortcodes.php:398
 msgid "Service title"
 msgstr "Название услуги"
 
@@ -1320,7 +1320,7 @@ msgid "Box style preset. This box will be shown for not logged users only"
 msgstr "Стиль блока. Это блок будет показан только неавторизованным пользователям"
 
 #: inc/shortcodes/data.php:860
-#: inc/shortcodes/shortcodes.php:647
+#: inc/shortcodes/shortcodes.php:648
 msgid "This content is for registered users only. Please %login%."
 msgstr "Это содержимое только для авторизованых пользователей. Пожалуйста %login%."
 
@@ -1333,7 +1333,7 @@ msgid "Message for not logged users"
 msgstr "Собщение для неавторизованных"
 
 #: inc/shortcodes/data.php:865
-#: inc/shortcodes/shortcodes.php:648
+#: inc/shortcodes/shortcodes.php:649
 msgid "login"
 msgstr "войдите"
 
@@ -1886,28 +1886,28 @@ msgstr "Выберите Да, чтобы не показывать прикре
 msgid "Custom posts query with customizable template"
 msgstr "Произвольный запрос записей/страниц с настраиваемым шаблоном"
 
-#: inc/shortcodes/shortcodes.php:415
+#: inc/shortcodes/shortcodes.php:416
 msgid "This is box title"
 msgstr "Заголовок блока"
 
-#: inc/shortcodes/shortcodes.php:485
-#: inc/shortcodes/shortcodes.php:517
-#: inc/shortcodes/shortcodes.php:553
-#: inc/shortcodes/shortcodes.php:587
+#: inc/shortcodes/shortcodes.php:486
+#: inc/shortcodes/shortcodes.php:518
+#: inc/shortcodes/shortcodes.php:554
+#: inc/shortcodes/shortcodes.php:588
 msgid "please specify correct url"
 msgstr "пожалуйста укажите корректную ссылку"
 
-#: inc/shortcodes/shortcodes.php:754
+#: inc/shortcodes/shortcodes.php:755
 msgid "This menu doesn't exists, or has no elements"
 msgstr "Такое меню не существует, или в нем нет ни одного элемента"
 
-#: inc/shortcodes/shortcodes.php:831
-#: inc/shortcodes/shortcodes.php:917
-#: inc/shortcodes/shortcodes.php:988
+#: inc/shortcodes/shortcodes.php:832
+#: inc/shortcodes/shortcodes.php:918
+#: inc/shortcodes/shortcodes.php:989
 msgid "images not found"
 msgstr "изображения не найдены"
 
-#: inc/shortcodes/shortcodes.php:1196
+#: inc/shortcodes/shortcodes.php:1197
 msgid "template not found"
 msgstr "шаблон не найден"
 
