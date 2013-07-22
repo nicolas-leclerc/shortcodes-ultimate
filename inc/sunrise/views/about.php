@@ -7,7 +7,7 @@
 		<span></span>
 		<a href="http://support.gndev.info/docs_category/shortcodes-ultimate/" target="_blank"><?php _e( 'Documentation', $this->textdomain ); ?></a>
 		<span></span>
-		<a href="http://support.gndev.info/shortcodes-ultimate/" target="_blank"><?php _e( 'Support forums', $this->textdomain ); ?></a>
+		<a href="http://wordpress.org/support/plugin/shortcodes-ultimate/" target="_blank"><?php _e( 'Support forum', $this->textdomain ); ?></a>
 		<span></span>
 		<a href="http://wordpress.org/extend/plugins/shortcodes-ultimate/changelog/" target="_blank"><?php _e( 'Changelog', $this->textdomain ); ?></a>
 		<span></span>

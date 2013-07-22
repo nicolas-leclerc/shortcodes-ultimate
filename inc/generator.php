@@ -23,11 +23,11 @@
 			<div id="su-generator">
 				<div id="su-generator-header">
 					<div id="su-generator-tools">
-						<a href="<?php echo $shult->admin_url; ?>" target="_blank" title="<?php _e( 'Settings', $shult->textdomain ); ?>"><?php _e( 'Plugin settings', $shult->textdomain ); ?></a>
+						<a href="<?php echo $shult->admin_url; ?>#tab-1" target="_blank" title="<?php _e( 'Settings', $shult->textdomain ); ?>"><?php _e( 'Plugin settings', $shult->textdomain ); ?></a>
 						<span></span>
-						<a href="http://shortcodes-ultimate.com/" target="_blank" title="<?php _e( 'Plugin homepage', $shult->textdomain ); ?>"><?php _e( 'Plugin homepage', $shult->textdomain ); ?></a>
+						<a href="http://gndev.info/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Plugin homepage', $shult->textdomain ); ?>"><?php _e( 'Plugin homepage', $shult->textdomain ); ?></a>
 						<span></span>
-						<a href="http://support.gndev.info/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Support forums', $shult->textdomain ); ?>"><?php _e( 'Support forums', $shult->textdomain ); ?></a>
+						<a href="http://wordpress.org/support/plugin/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Support forums', $shult->textdomain ); ?>"><?php _e( 'Support forums', $shult->textdomain ); ?></a>
 					</div>
 					<input type="text" name="su_generator_search" id="su-generator-search" value="" placeholder="<?php _e( 'Search for shortcodes', $shult->textdomain ); ?>" />
 					<div id="su-generator-filter">
