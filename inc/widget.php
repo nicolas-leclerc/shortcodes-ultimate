@@ -90,7 +90,7 @@
 				</p>
 				<!-- Content: Textarea -->
 				<p>
-				<?php su_generator_button( 'widget', $this->get_field_id( 'content' ) ); ?><br/>
+				<?php su_generator_button( $this->get_field_id( 'content' ) ); ?><br/>
 					<textarea name="<?php echo $this->get_field_name( 'content' ); ?>" id="<?php echo $this->get_field_id( 'content' ); ?>" rows="7" class="widefat" style="margin-top:10px"><?php echo $instance['content']; ?></textarea>
 				</p>
 				<?php
