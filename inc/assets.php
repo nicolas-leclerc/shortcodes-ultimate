@@ -1,13 +1,10 @@
 <?php
 
-	$su_query_assets = array(
-		'css' => array( ),
-		'js' => array( )
-	);
+	$su_query_assets = array( 'css' => array(), 'js' => array() );
 
 	function su_query_asset( $type, $handle ) {
 		global $su_query_assets;
-		$su_query_assets[$type][] = $handle;
+		$su_query_assets[$type][$handle] = $handle;
 	}
 
 	function su_register_assets() {
@@ -31,37 +28,24 @@
 	add_action( 'wp_head', 'su_register_assets' );
 	add_action( 'su_generator_preview_before', 'su_register_assets' );
 
+
 	function su_enqueue_assets() {
 		// Get assets query and plugin object
 		global $su_query_assets, $shult;
+		// Apply filters to modify assets set
+		$su_query_assets['css'] = ( array ) apply_filters( 'shortcodes_ultimate_css', ( array ) array_unique( $su_query_assets['css'] ) );
+		$su_query_assets['js'] = ( array ) apply_filters( 'shortcodes_ultimate_js', ( array ) array_unique( $su_query_assets['js'] ) );
 		// Get custom CSS
 		$custom_css = $shult->get_option( 'custom_css' );
 		// Enqueue stylesheets
-		foreach ( ( array ) array_unique( $su_query_assets['css'] ) as $asset )
-			wp_enqueue_style( $asset );
+		wp_print_styles( array_unique( $su_query_assets['css'] ) );
 		// Enqueue scripts
-		foreach ( ( array ) array_unique( $su_query_assets['js'] ) as $asset )
-			wp_enqueue_script( $asset );
+		wp_print_scripts( array_unique( $su_query_assets['js'] ) );
 		// Print custom css
-		if ( $custom_css )
-			echo "\n\n<!-- Shortcodes Ultimate custom CSS - begin -->\n<style type='text/css'>\n" . stripslashes( str_replace( array( '%theme_url%', '%home_url%', '%plugin_url%' ), array( get_stylesheet_directory_uri(), get_option( 'home' ), $shult->url ), $custom_css ) ) . "\n</style>\n<!-- Shortcodes Ultimate custom CSS - end -->\n\n";
+		if ( $custom_css ) echo "\n\n<!-- Shortcodes Ultimate custom CSS - begin -->\n<style type='text/css'>\n" .
+			stripslashes( str_replace( array( '%theme_url%', '%home_url%', '%plugin_url%' ), array( get_stylesheet_directory_uri(), get_option( 'home' ), $shult->url ), $custom_css ) ) .
+			"\n</style>\n<!-- Shortcodes Ultimate custom CSS - end -->\n\n";
 	}
 
 	add_action( 'wp_footer', 'su_enqueue_assets' );
-
-	function su_enqueue_generator_assets() {
-		// Get assets query and plugin object
-		global $su_query_assets, $shult;
-		// Get custom CSS
-		$custom_css = $shult->get_option( 'custom_css' );
-		// Enqueue stylesheets
-		wp_print_styles( ( array ) array_unique( $su_query_assets['css'] ) );
-		// Enqueue scripts
-		wp_print_scripts( ( array ) array_unique( $su_query_assets['js'] ) );
-		// Print custom css
-		if ( $custom_css )
-			echo "\n\n<!-- Shortcodes Ultimate custom CSS - begin -->\n<style type='text/css'>\n" . stripslashes( str_replace( array( '%theme_url%', '%home_url%', '%plugin_url%' ), array( get_stylesheet_directory_uri(), get_option( 'home' ), $shult->url ), $custom_css ) ) . "\n</style>\n<!-- Shortcodes Ultimate custom CSS - end -->\n\n";
-	}
-
 	add_action( 'su_generator_preview_after', 'su_enqueue_generator_assets' );
-?>

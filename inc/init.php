@@ -14,31 +14,26 @@
 		// Load textdomain
 		load_plugin_textdomain( 'shortcodes-ultimate', false, 'shortcodes-ultimate/languages/' );
 		// Prepare messages
-		$message_wp = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your version of WordPress (%s).<br />Reccomended WordPress version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>', 'shortcodes-ultimate' ), $wp, $min_wp, network_admin_url( 'plugins.php?deactivate=true' ), $_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
-		$message_php = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your PHP version (%s).<br />Reccomended PHP version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>', 'shortcodes-ultimate' ), $php, $min_php, network_admin_url( 'plugins.php?deactivate=true' ), $_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
+		$message_wp = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your version of WordPress (%s).<br />Reccomended WordPress version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>', 'shortcodes-ultimate' ), $wp, $min_wp, network_admin_url( 'plugins.php?deactivate=true' ),
+			$_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
+		$message_php = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your PHP version (%s).<br />Reccomended PHP version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>', 'shortcodes-ultimate' ), $php, $min_php, network_admin_url( 'plugins.php?deactivate=true' ),
+			$_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
 		// Check Forced activation
-		if ( !isset( $_GET['continue'] ) )
-			if ( version_compare( $min_wp, $wp, '>' ) ) {
-				deactivate_plugins( plugin_basename( SU_PLUGIN_FILE ) );
-				wp_die( $message_wp );
-			}
-			elseif ( version_compare( $min_php, $php, '>' ) ) {
-				deactivate_plugins( plugin_basename( SU_PLUGIN_FILE ) );
-				wp_die( $message_php );
-			}
+		if ( !isset( $_GET['continue'] ) ) if ( version_compare( $min_wp, $wp, '>' ) ) {
+			deactivate_plugins( plugin_basename( SU_PLUGIN_FILE ) );
+			wp_die( $message_wp );
+		}
+		elseif ( version_compare( $min_php, $php, '>' ) ) {
+			deactivate_plugins( plugin_basename( SU_PLUGIN_FILE ) );
+			wp_die( $message_php );
+		}
 	}
 
 	// Create plugin instance
 	$shult = new Sunrise_Plugin_Framework;
 
 	// Register settings page
-	$shult->add_settings_page( array(
-		'parent' => 'options-general.php',
-		'page_title' => $shult->name,
-		'menu_title' => $shult->name,
-		'capability' => 'manage_options',
-		'settings_link' => false
-	) );
+	$shult->add_settings_page( array( 'parent' => 'options-general.php', 'page_title' => $shult->name, 'menu_title' => $shult->name, 'capability' => 'manage_options', 'settings_link' => false ) );
 
 	// Translate plugin meta
 	__( 'Shortcodes Ultimate', $shult->textdomain );
@@ -69,5 +64,3 @@
 		global $shult;
 		return $shult;
 	}
-
-?>
