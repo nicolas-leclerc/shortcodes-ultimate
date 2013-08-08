@@ -149,6 +149,9 @@
 	 * Enqueue additional assets at options page created with Sunrise Plugin Framework
 	 */
 	function su_add_options_page_assets() {
+		$shult = shortcodes_ultimate();
+		// Check this is Shortcodes Ultimate settings page
+		if ( $_GET['page'] !== $shult->slug ) return;
 		// Request assets
 		su_query_asset( 'css', array( 'magnific-popup', 'codemirror', 'codemirror-ambiance', 'su-options-page' ) );
 		su_query_asset( 'js',
