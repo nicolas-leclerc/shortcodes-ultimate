@@ -92,11 +92,7 @@ jQuery(document).ready(function ($) {
 		type: 'iframe'
 	});
 
-	$('#sunrise-plugin-tabs span').click(function () {
-		suCodeMirror.refresh();
-	});
-
-	var suCodeMirror = CodeMirror.fromTextArea(document.getElementById('sunrise-plugin-field-custom_css'), {
+	window.suCodeMirror = CodeMirror.fromTextArea(document.getElementById('sunrise-plugin-field-custom_css'), {
 		indentUnit: 4,
 		mode: 'css',
 		theme: 'ambiance',
@@ -105,9 +101,15 @@ jQuery(document).ready(function ($) {
 		lineNumbers: true
 	});
 
+	$('#sunrise-plugin-tabs span').click(function () {
+		setTimeout(function() {
+			window.suCodeMirror.refresh()
+		}, 1);
+	});
+
 	$('#su-fullscreen').click(function (e) {
 		$(this).parent().toggleClass('su-custom-css-fullscreen');
-		suCodeMirror.refresh();
+		window.suCodeMirror.refresh();
 	});
 
 	// Apply sortable

@@ -4,12 +4,20 @@
 	 * Generator button
 	 */
 	function su_generator_button( $target = 'content' ) {
-		global $shult;
+		$shult = shortcodes_ultimate();
 		// Print button
 		echo '<a href="#su-generator" class="su-generator-button button" title="' .
 			__( 'Insert shortcode', $shult->textdomain ) . '" data-target="' . $target . '"><img src="' .
 			$shult->assets( 'images', 'generator/button.png' ) . '" alt="" /> ' .
 			__( 'Insert shortcode', $shult->textdomain ) . '</a>';
+		// Show generator popup
+		add_action( 'wp_footer', 'su_generator_popup' );
+		add_action( 'admin_footer', 'su_generator_popup' );
+		// Request assets
+		su_query_asset( 'css', array( 'farbtastic', 'magnific-popup', 'su-generator' ) );
+		su_query_asset( 'js',
+		                array( 'jquery', 'jquery-ui-widget', 'iframe-transport', 'fileupload', 'farbtastic', 'qtip',
+		                       'magnific-popup', 'su-generator' ) );
 	}
 
 	add_action( 'media_buttons', 'su_generator_button', 100 );
@@ -18,25 +26,26 @@
 	 * Generator popup form
 	 */
 	function su_generator_popup() {
-		global $shult, $pagenow;
-		if ( !in_array( $pagenow, array(
-		                               'post.php', 'edit.php', 'post-new.php', 'index.php', 'edit-tags.php',
-		                               'widgets.php'
-		                          ) )
-		) return;
+		$shult = shortcodes_ultimate();
 		?>
 		<div id="su-generator-wrap" style="display:none">
 			<div id="su-generator">
 				<div id="su-generator-header">
 					<div id="su-generator-tools">
-						<a href="<?php echo $shult->admin_url; ?>#tab-1" target="_blank" title="<?php _e( 'Settings', $shult->textdomain ); ?>"><?php _e( 'Plugin settings', $shult->textdomain ); ?></a>
+						<a href="<?php echo $shult->admin_url; ?>#tab-1" target="_blank" title="<?php _e( 'Settings',
+						                                                                                  $shult->textdomain ); ?>"><?php _e( 'Plugin settings',
+						                                                                                                                      $shult->textdomain ); ?></a>
 						<span></span>
-						<a href="http://gndev.info/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Plugin homepage', $shult->textdomain ); ?>"><?php _e( 'Plugin homepage', $shult->textdomain ); ?></a>
+						<a href="http://gndev.info/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Plugin homepage',
+						                                                                                  $shult->textdomain ); ?>"><?php _e( 'Plugin homepage',
+						                                                                                                                      $shult->textdomain ); ?></a>
 						<span></span>
-						<a href="http://wordpress.org/support/plugin/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Support forums', $shult->textdomain ); ?>"><?php _e( 'Support forums', $shult->textdomain ); ?></a>
+						<a href="http://wordpress.org/support/plugin/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Support forums',
+						                                                                                                    $shult->textdomain ); ?>"><?php _e( 'Support forums',
+						                                                                                                                                        $shult->textdomain ); ?></a>
 					</div>
-					<input type="text" name="su_generator_search" id="su-generator-search" value="" placeholder="<?php _e( 'Search for shortcodes', $shult->textdomain ); ?>" />
-
+					<input type="text" name="su_generator_search" id="su-generator-search" value="" placeholder="<?php _e( 'Search for shortcodes',
+					                                                                                                       $shult->textdomain ); ?>" />
 					<div id="su-generator-filter">
 						<strong><?php _e( 'Filter by type', $shult->textdomain ); ?></strong>
 						<a href="#" data-filter="all"><?php _e( 'All', $shult->textdomain ); ?></a>
@@ -64,20 +73,17 @@
 				<input type="hidden" name="su-generator-selected" id="su-generator-selected" value="<?php echo $shult->url; ?>" />
 				<input type="hidden" name="su-generator-url" id="su-generator-url" value="<?php echo $shult->url; ?>" />
 				<input type="hidden" name="su-compatibility-mode-prefix" id="su-compatibility-mode-prefix" value="<?php echo su_compatibility_mode_prefix(); ?>" />
-
 				<div id="su-generator-result" style="display:none"></div>
 			</div>
 		</div>
 	<?php
 	}
 
-	add_action( 'admin_footer', 'su_generator_popup' );
-
 	/**
 	 * Process AJAX request
 	 */
 	function su_generator_settings() {
-		global $shult;
+		$shult = shortcodes_ultimate();
 		// Capability check
 		if ( !current_user_can( 'edit_posts' ) ) wp_die( __( 'Access denied', $shult->textdomain ) );
 		// Param check
@@ -85,7 +91,7 @@
 		// Request queried shortcode
 		$shortcode = su_shortcodes( htmlentities( $_REQUEST['shortcode'] ) );
 		// Shortcode header
-		$return .= '<div id="su-generator-breadcrumbs"><a href="#" id="su-generator-select-another" title="' .
+		$return = '<div id="su-generator-breadcrumbs"><a href="#" id="su-generator-select-another" title="' .
 			__( 'Click to return to the shortcodes list', $shult->textdomain ) . '">' .
 			__( 'All shortcodes', $shult->textdomain ) . '</a> &rarr; <span>' . $shortcode['name'] . '</span> <small>' .
 			$shortcode['desc'] . '</small></div>';
@@ -186,8 +192,11 @@
 						break;
 				}
 				if ( $attr_info['desc'] ) $return .= '<div class="su-generator-attr-desc">' . str_replace( '<b%value>',
-						'<b class="su-generator-set-value" title="' .
-						__( 'Click to set this value', $shult->textdomain ) . '">', $attr_info['desc'] ) . '</div>';
+				                                                                                           '<b class="su-generator-set-value" title="' .
+				                                                                                           __( 'Click to set this value',
+				                                                                                               $shult->textdomain ) .
+				                                                                                           '">',
+				                                                                                           $attr_info['desc'] ) . '</div>';
 				$return .= '</div>';
 			}
 		}
@@ -217,7 +226,7 @@
 	 * Process AJAX request and generate preview HTML
 	 */
 	function su_generator_preview() {
-		global $shult;
+		$shult = shortcodes_ultimate();
 		// Check authentication
 		if ( !current_user_can( 'edit_posts' ) ) die( __( 'Access denied', $shult->textdomain ) );
 		// Output results
@@ -235,7 +244,7 @@
 	 * Process AJAX request and generate json-encoded array with terms
 	 */
 	function su_generator_get_terms() {
-		global $shult;
+		$shult = shortcodes_ultimate();
 		// Check authentication
 		if ( !current_user_can( 'edit_posts' ) ) die( __( 'Access denied', $shult->textdomain ) );
 		die( json_encode( su_get_terms( sanitize_text_field( $_POST['taxonomy'] ) ) ) );
@@ -247,8 +256,7 @@
 	 * Function to handle uploads
 	 */
 	function su_generator_upload() {
-		// Prepare data
-		global $shult;
+		$shult = shortcodes_ultimate();
 		// Check capability
 		if ( !current_user_can( 'edit_posts' ) ) die( __( 'Access denied', $shult->textdomain ) );
 		// Create mew upload instance

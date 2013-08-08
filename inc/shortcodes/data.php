@@ -5,7 +5,7 @@
 	 */
 	function su_shortcodes( $shortcode = false ) {
 		// Get plugin object
-		global $shult;
+		$shult = shortcodes_ultimate();
 		// Setup shortcodes data
 		$shortcodes = apply_filters( 'shortcodes_ultimate_data', array(
 			# heading

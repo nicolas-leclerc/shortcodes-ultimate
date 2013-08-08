@@ -9,10 +9,10 @@
 	  Description: Supercharge your WordPress theme with mega pack of shortcodes
 	  Text Domain: shortcodes-ultimate
 	  Domain Path: /languages
-	  License: GPL2
+	  License: GPL
 	 */
 
-	// Define plugin file
+	// Define plugin file constant
 	define( 'SU_PLUGIN_FILE', __FILE__ );
 
 	// Include classes

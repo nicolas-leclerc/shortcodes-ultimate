@@ -308,7 +308,7 @@
 				// Prepare last tweet class
 				$last_tweet_class = ( $num == ( $limit - 1 ) ) ? ' su-tweet-last' : '';
 				// Prepare markup
-				$return .= '<div class="su-tweet' . $last_tweet_class . '">';
+				$return = '<div class="su-tweet' . $last_tweet_class . '">';
 				$return .= '<a href="http://twitter.com/' . $username . '" class="su-tweet-username">@' . $username . '</a>: ';
 				$return .= su_parse_links( $tweet->text );
 				$return .= $time;
