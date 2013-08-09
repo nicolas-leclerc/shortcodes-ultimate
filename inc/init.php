@@ -36,6 +36,8 @@
 		__( 'Supercharge your WordPress theme with mega pack of shortcodes', $shult->textdomain );
 		// Add links to plugins dashboard
 		add_filter( 'plugin_action_links_' . $shult->basename, 'su_plugin_actions_links', -10 );
+		// Reset skin when theme is changed
+		add_action( 'switch_theme', 'su_reset_skin' );
 	}
 
 	/**
@@ -50,10 +52,14 @@
 		// Load textdomain
 		load_plugin_textdomain( 'shortcodes-ultimate', false, 'shortcodes-ultimate/languages/' );
 		// Prepare messages
-		$message_wp = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your version of WordPress (%s).<br />Reccomended WordPress version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>', 'shortcodes-ultimate' ), $wp, $min_wp, network_admin_url( 'plugins.php?deactivate=true' ),
-			$_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
-		$message_php = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your PHP version (%s).<br />Reccomended PHP version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>', 'shortcodes-ultimate' ), $php, $min_php, network_admin_url( 'plugins.php?deactivate=true' ),
-			$_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
+		$message_wp = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your version of WordPress (%s).<br />Reccomended WordPress version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>',
+		                           'shortcodes-ultimate' ), $wp, $min_wp,
+		                       network_admin_url( 'plugins.php?deactivate=true' ),
+		                       $_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
+		$message_php = sprintf( __( '<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your PHP version (%s).<br />Reccomended PHP version &ndash; %s (or higher).</p><a href="%s">&larr; Return to the plugins screen</a> <a href="%s"%s>Continue and activate anyway &rarr;</a>',
+		                            'shortcodes-ultimate' ), $php, $min_php,
+		                        network_admin_url( 'plugins.php?deactivate=true' ),
+		                        $_SERVER['REQUEST_URI'] . '&continue=true', ' style="float:right;font-weight:bold"' );
 		// Check Forced activation
 		if ( !isset( $_GET['continue'] ) ) if ( version_compare( $min_wp, $wp, '>' ) ) {
 			deactivate_plugins( plugin_basename( SU_PLUGIN_FILE ) );
@@ -76,6 +82,14 @@
 	}
 
 	/**
+	 * Reset skin to default
+	 */
+	function su_reset_skin() {
+		$shult = shortcodes_ultimate();
+		$shult->update_option( 'skin', 'default' );
+	}
+
+	/**
 	 * Plugin options
 	 */
 	function su_plugin_options() {
@@ -84,18 +98,26 @@
 		              array( 'type' => 'about' ), array( 'type' => 'closetab', 'actions' => false ),
 		              array( 'name' => __( 'Settings', $shult->textdomain ), 'type' => 'opentab' ),
 		              array( 'name' => __( 'Custom formatting', $shult->textdomain ), 'desc' =>
-		              __( 'Disable this option if you have some problems with other plugins or content formatting', $shult->textdomain ) .
+		              __( 'Disable this option if you have some problems with other plugins or content formatting',
+		                  $shult->textdomain ) .
 		              '<br /><a href="http://support.gndev.info/docs/custom-formatting/" target="_blank">' .
 		              __( 'Documentation article', $shult->textdomain ) . '</a>', 'std' => 'on',
 		                     'id' => 'custom_formatting', 'type' => 'checkbox',
 		                     'label' => __( 'Enabled', $shult->textdomain ) ),
 		              array( 'name' => __( 'Compatibility mode', $shult->textdomain ), 'desc' =>
-		              __( 'Enable this option if you have some problems with other plugins that uses similar shortcode names', $shult->textdomain ) .
-		              '<br /><code>[button] => [su_button]</code> ' . __( 'etc.', $shult->textdomain ) .
+		              __( 'Enable this option if you have some problems with other plugins that uses similar shortcode names',
+		                  $shult->textdomain ) . '<br /><code>[button] => [su_button]</code> ' .
+		              __( 'etc.', $shult->textdomain ) .
 		              '<br /><a href="http://support.gndev.info/docs/compatibility-mode/" target="_blank">' .
 		              __( 'Documentation article', $shult->textdomain ) . '</a>', 'std' => '',
 		                     'id' => 'compatibility_mode', 'type' => 'checkbox',
-		                     'label' => __( 'Enabled', $shult->textdomain ) ), array( 'type' => 'closetab' ),
+		                     'label' => __( 'Enabled', $shult->textdomain ) ),
+		              array( 'name' => __( 'Skin', $shult->textdomain ),
+		                     'desc' => sprintf( __( 'Choose skin for shortcodes.<br /><a href="%s" target="_blank">Learn how to create custom skin</a><br /><a href="%s" target="_blank"><b>Download more skins</b></a>',
+		                                            $shult->textdomain ),
+		                                        'http://support.gndev.info/docs/create-custom-skin/',
+		                                        'http://gndev.info/shortcodes-ultimate/addons/' ), 'std' => 'default',
+		                     'id' => 'skin', 'type' => 'skin' ), array( 'type' => 'closetab' ),
 		              array( 'name' => __( 'Custom CSS', $shult->textdomain ), 'type' => 'opentab' ),
 		              array( 'id' => 'custom_css', 'type' => 'css' ), array( 'type' => 'closetab' ),
 		              array( 'name' => __( 'Galleries', $shult->textdomain ), 'type' => 'opentab' ),

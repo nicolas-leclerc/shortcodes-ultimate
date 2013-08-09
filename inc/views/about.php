@@ -3,7 +3,7 @@
 	<div id="su-links">
 		<a href="http://gndev.info/shortcodes-ultimate/" target="_blank"><strong><?php _e( 'Project homepage', $this->textdomain ); ?></strong></a>
 		<span></span>
-		<a href="http://gndev.info/plugins/" target="_blank"><?php _e( 'Add-ons', $this->textdomain ); ?></a>
+		<a href="http://gndev.info/shortcodes-ultimate/addons/" target="_blank"><?php _e( 'Add-ons', $this->textdomain ); ?></a>
 		<span></span>
 		<a href="http://support.gndev.info/docs_category/shortcodes-ultimate/" target="_blank"><?php _e( 'Documentation', $this->textdomain ); ?></a>
 		<span></span>

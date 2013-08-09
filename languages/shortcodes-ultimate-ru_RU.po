@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gn_themes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-22 04:02+0300\n"
-"PO-Revision-Date: 2013-07-22 04:02+0300\n"
+"POT-Creation-Date: 2013-08-09 15:53+0300\n"
+"PO-Revision-Date: 2013-08-09 15:53+0300\n"
 "Last-Translator: Vladimir Anokhin <ano.vladimir@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,11 +14,11 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/sunrise.class.php:312
-#: inc/generator.php:26
-#: inc/init.php:53
+#: classes/sunrise.class.php:279
+#: inc/generator.php:35
+#: inc/init.php:73
+#: inc/init.php:85
 #: inc/shortcodes/data.php:362
-#: inc/sunrise/options.php:17
 msgid "Settings"
 msgstr "Настройки"
 
@@ -80,147 +80,195 @@ msgstr "Текст заголовка 2"
 msgid "Styled heading 2"
 msgstr "Стильный заголовок 2"
 
-#: inc/generator.php:9
-#: inc/generator.php:163
+#: inc/generator.php:10
+#: inc/generator.php:12
+#: inc/generator.php:214
 msgid "Insert shortcode"
 msgstr "Вставка шорткода"
 
-#: inc/generator.php:26
+#: inc/generator.php:36
 msgid "Plugin settings"
 msgstr "Настройки плагина"
 
-#: inc/generator.php:28
+#: inc/generator.php:39
+#: inc/generator.php:40
 msgid "Plugin homepage"
 msgstr "Сайт плагина"
 
-#: inc/generator.php:30
-#: inc/sunrise/views/about.php:10
+#: inc/generator.php:43
+#: inc/generator.php:44
 msgid "Support forums"
 msgstr "Форум поддержки"
 
-#: inc/generator.php:32
+#: inc/generator.php:47
 msgid "Search for shortcodes"
 msgstr "Поиск шорткода"
 
-#: inc/generator.php:34
+#: inc/generator.php:50
 msgid "Filter by type"
 msgstr "Фильтр"
 
-#: inc/generator.php:35
+#: inc/generator.php:51
 msgid "All"
 msgstr "Все"
 
-#: inc/generator.php:36
-#: inc/generator.php:161
+#: inc/generator.php:52
+#: inc/generator.php:208
 msgid "Content"
 msgstr "Содержимое"
 
-#: inc/generator.php:37
+#: inc/generator.php:53
 msgid "Boxes"
 msgstr "Блоки"
 
-#: inc/generator.php:38
+#: inc/generator.php:54
 msgid "Media"
 msgstr "Медиа"
 
-#: inc/generator.php:39
+#: inc/generator.php:55
 msgid "Other"
 msgstr "Другое"
 
-#: inc/generator.php:70
-#: inc/generator.php:177
-#: inc/generator.php:196
-#: inc/generator.php:210
+#: inc/generator.php:88
+#: inc/generator.php:231
+#: inc/generator.php:249
+#: inc/generator.php:261
 msgid "Access denied"
 msgstr "Доступ запрещен"
 
-#: inc/generator.php:73
+#: inc/generator.php:90
 msgid "Shortcode not specified"
 msgstr "Не выбран шорткод"
 
-#: inc/generator.php:77
+#: inc/generator.php:95
 msgid "Click to return to the shortcodes list"
 msgstr "Нажмите, чтобы вернуться к списку шорткодов"
 
-#: inc/generator.php:77
+#: inc/generator.php:96
 msgid "All shortcodes"
 msgstr "Все шорткоды"
 
-#: inc/generator.php:109
+#: inc/generator.php:129
 msgid "Yes"
 msgstr "Да"
 
-#: inc/generator.php:109
+#: inc/generator.php:130
 msgid "No"
 msgstr "Нет"
 
-#: inc/generator.php:113
+#: inc/generator.php:142
 msgid "Max upload file size"
 msgstr "Макс. размер файла"
 
-#: inc/generator.php:113
+#: inc/generator.php:143
 msgid "Mb"
 msgstr "Мб"
 
-#: inc/generator.php:113
+#: inc/generator.php:145
 msgid "How to increase"
 msgstr "Как увеличить"
 
-#: inc/generator.php:132
+#: inc/generator.php:167
 msgid "Untitled gallery"
 msgstr "Галерея без имени"
 
-#: inc/generator.php:139
+#: inc/generator.php:176
 msgid "Galleries not found"
 msgstr "Галереи не найдены"
 
-#: inc/generator.php:140
+#: inc/generator.php:178
 msgid "Manage galleries"
 msgstr "Управление галереями"
 
-#: inc/generator.php:152
+#: inc/generator.php:196
 msgid "Click to set this value"
 msgstr "Нажмите чтобы установить это значение"
 
-#: inc/generator.php:163
+#: inc/generator.php:216
 msgid "Live preview"
 msgstr "Включить предпросмотр"
 
-#: inc/generator.php:163
+#: inc/generator.php:218
 msgid "Close window"
 msgstr "Закрыть окно"
 
-#: inc/generator.php:180
+#: inc/generator.php:234
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: inc/init.php:17
-#, php-format
-msgid "<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your version of WordPress (%s).<br />Reccomended WordPress version &ndash; %s (or higher).</p><a href=\"%s\">&larr; Return to the plugins screen</a> <a href=\"%s\"%s>Continue and activate anyway &rarr;</a>"
-msgstr "<h1>Упс! Плагин не активирован&hellip;</h1> <p>Плагин Shortcodes Ultimate не полностью совместим с вашей версией WordPress (%s).<br />Рекомендуемая версия WordPress &ndash; %s (или выше).</p><a href=\"%s\">&larr; Вернуться к списку плагинов</a> <a href=\"%s\"%s>Продолжить и все равно активировать &rarr;</a>"
-
-#: inc/init.php:18
-#, php-format
-msgid "<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your PHP version (%s).<br />Reccomended PHP version &ndash; %s (or higher).</p><a href=\"%s\">&larr; Return to the plugins screen</a> <a href=\"%s\"%s>Continue and activate anyway &rarr;</a>"
-msgstr "<h1>Упс! Плагин не активирован&hellip;</h1> <p>Плагин Shortcodes Ultimate не полностью совместим с вашей версией PHP (%s).<br />Рекомендуемая версия PHP &ndash; %s (или выше).</p><a href=\"%s\">&larr; Вернуться к списку плагинов</a> <a href=\"%s\"%s>Продолжить и все равно активировать &rarr;</a>"
-
-#: inc/init.php:44
+#: inc/init.php:34
 #: inc/widget.php:40
 #: inc/widget.php:83
 msgid "Shortcodes Ultimate"
 msgstr "Шорткоды"
 
-#: inc/init.php:45
+#: inc/init.php:35
 msgid "Vladimir Anokhin"
 msgstr "Владимир Анохин"
 
-#: inc/init.php:46
+#: inc/init.php:36
 msgid "Supercharge your WordPress theme with mega pack of shortcodes"
 msgstr "Суперзарядка для вашей WordPress-темы с помощью мега набора шорткодов"
 
-#: inc/init.php:54
+#: inc/init.php:53
+#, php-format
+msgid "<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your version of WordPress (%s).<br />Reccomended WordPress version &ndash; %s (or higher).</p><a href=\"%s\">&larr; Return to the plugins screen</a> <a href=\"%s\"%s>Continue and activate anyway &rarr;</a>"
+msgstr "<h1>Упс! Плагин не активирован&hellip;</h1> <p>Плагин Shortcodes Ultimate не полностью совместим с вашей версией WordPress (%s).<br />Рекомендуемая версия WordPress &ndash; %s (или выше).</p><a href=\"%s\">&larr; Вернуться к списку плагинов</a> <a href=\"%s\"%s>Продолжить и все равно активировать &rarr;</a>"
+
+#: inc/init.php:55
+#, php-format
+msgid "<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your PHP version (%s).<br />Reccomended PHP version &ndash; %s (or higher).</p><a href=\"%s\">&larr; Return to the plugins screen</a> <a href=\"%s\"%s>Continue and activate anyway &rarr;</a>"
+msgstr "<h1>Упс! Плагин не активирован&hellip;</h1> <p>Плагин Shortcodes Ultimate не полностью совместим с вашей версией PHP (%s).<br />Рекомендуемая версия PHP &ndash; %s (или выше).</p><a href=\"%s\">&larr; Вернуться к списку плагинов</a> <a href=\"%s\"%s>Продолжить и все равно активировать &rarr;</a>"
+
+#: inc/init.php:74
 msgid "Welcome"
 msgstr "Добро пожаловать"
+
+#: inc/init.php:83
+msgid "About"
+msgstr "О плагине"
+
+#: inc/init.php:86
+msgid "Custom formatting"
+msgstr "Cпециальное форматирование"
+
+#: inc/init.php:87
+msgid "Disable this option if you have some problems with other plugins or content formatting"
+msgstr "Снимите этот флажок, если у вас возникли проблемы совместимости с другими плагинами или форматированием контента"
+
+#: inc/init.php:89
+#: inc/init.php:96
+msgid "Documentation article"
+msgstr "Статья из документации (англ.)"
+
+#: inc/init.php:91
+#: inc/init.php:98
+msgid "Enabled"
+msgstr "Включено"
+
+#: inc/init.php:92
+msgid "Compatibility mode"
+msgstr "Режим совместимости"
+
+#: inc/init.php:93
+msgid "Enable this option if you have some problems with other plugins that uses similar shortcode names"
+msgstr "Отметьте этот флажок, если у вас используются другие шорткоды с такими же именами. Все шорткоды этого плагина будут иметь такие имена"
+
+#: inc/init.php:94
+msgid "etc."
+msgstr "и т.д."
+
+#: inc/init.php:99
+msgid "Custom CSS"
+msgstr "Произвольный CSS"
+
+#: inc/init.php:101
+msgid "Galleries"
+msgstr "Галереи"
+
+#: inc/init.php:103
+msgid "Cheatsheet"
+msgstr "Шпаргалка"
 
 #: inc/resize.php:49
 #: inc/resize.php:176
@@ -1911,287 +1959,245 @@ msgstr "изображения не найдены"
 msgid "template not found"
 msgstr "шаблон не найден"
 
-#: inc/sunrise/options.php:6
-msgid "About"
-msgstr "О плагине"
-
-#: inc/sunrise/options.php:21
-msgid "Custom formatting"
-msgstr "Cпециальное форматирование"
-
-#: inc/sunrise/options.php:22
-msgid "Disable this option if you have some problems with other plugins or content formatting"
-msgstr "Снимите этот флажок, если у вас возникли проблемы совместимости с другими плагинами или форматированием контента"
-
-#: inc/sunrise/options.php:22
-#: inc/sunrise/options.php:30
-msgid "Documentation article"
-msgstr "Статья из документации (англ.)"
-
-#: inc/sunrise/options.php:26
-#: inc/sunrise/options.php:34
-msgid "Enabled"
-msgstr "Включено"
-
-#: inc/sunrise/options.php:29
-msgid "Compatibility mode"
-msgstr "Режим совместимости"
-
-#: inc/sunrise/options.php:30
-msgid "Enable this option if you have some problems with other plugins that uses similar shortcode names"
-msgstr "Отметьте этот флажок, если у вас используются другие шорткоды с такими же именами. Все шорткоды этого плагина будут иметь такие имена"
-
-#: inc/sunrise/options.php:30
-msgid "etc."
-msgstr "и т.д."
-
-#: inc/sunrise/options.php:40
-msgid "Custom CSS"
-msgstr "Произвольный CSS"
-
-#: inc/sunrise/options.php:51
-msgid "Galleries"
-msgstr "Галереи"
-
-#: inc/sunrise/options.php:62
-msgid "Cheatsheet"
-msgstr "Шпаргалка"
-
-#: inc/sunrise/views/about.php:2
+#: inc/views/about.php:2
 msgid "Welcome to Shortcodes Ultimate"
 msgstr "Добро пожаловать в Shortcodes Ultimate"
 
-#: inc/sunrise/views/about.php:2
+#: inc/views/about.php:2
 msgid "A real swiss army knife for WordPress"
 msgstr "Настоящий швейцарский армейский нож для WordPress"
 
-#: inc/sunrise/views/about.php:4
+#: inc/views/about.php:4
 msgid "Project homepage"
 msgstr "Страница проекта"
 
-#: inc/sunrise/views/about.php:6
+#: inc/views/about.php:6
 msgid "Add-ons"
 msgstr "Дополнения"
 
-#: inc/sunrise/views/about.php:8
+#: inc/views/about.php:8
 msgid "Documentation"
 msgstr "Документация"
 
-#: inc/sunrise/views/about.php:12
+#: inc/views/about.php:10
+msgid "Support forum"
+msgstr "Форум поддержки"
+
+#: inc/views/about.php:12
 msgid "Changelog"
 msgstr "Список изменений"
 
-#: inc/sunrise/views/about.php:14
+#: inc/views/about.php:14
 msgid "Contact author"
 msgstr "Связаться с автором"
 
-#: inc/sunrise/views/about.php:17
+#: inc/views/about.php:17
 msgid "Plugin features"
 msgstr "Возможности плагина"
 
-#: inc/sunrise/views/about.php:19
+#: inc/views/about.php:19
 msgid "30+ amazing shortcodes"
 msgstr "30+ невероятных шорткодов"
 
-#: inc/sunrise/views/about.php:20
+#: inc/views/about.php:20
 msgid "Power of CSS3 transitions"
 msgstr "Сила CSS3"
 
-#: inc/sunrise/views/about.php:21
+#: inc/views/about.php:21
 msgid "Handy shortcodes generator"
 msgstr "Удобный генератор шорткодов"
 
-#: inc/sunrise/views/about.php:22
+#: inc/views/about.php:22
 msgid "International"
 msgstr "Интернационален"
 
-#: inc/sunrise/views/about.php:23
+#: inc/views/about.php:23
 msgid "Documented API"
 msgstr "Доментированный API"
 
-#: inc/sunrise/views/about.php:27
+#: inc/views/about.php:27
 msgid "What is a shortcode?"
 msgstr "Что такое шорткод?"
 
-#: inc/sunrise/views/about.php:28
+#: inc/views/about.php:28
 msgid "<strong>Shortcode</strong> is a WordPress-specific code that lets you do nifty things with very little effort."
 msgstr "<strong>Шорткод</strong> это специфичный для WordPress код, который позволяет вам делать изящные вещи с небольшими усилиями."
 
-#: inc/sunrise/views/about.php:29
+#: inc/views/about.php:29
 msgid "Shortcodes can embed files or create objects that would normally require lots of complicated, ugly code in just one line. Shortcode = shortcut."
 msgstr "С помощью шорткодов можно встраивать на страницу видео- или аудио файлы, галереи, различные кнопки и многое другое с помощью всего одной строки кода."
 
-#: inc/sunrise/views/about.php:33
+#: inc/views/about.php:33
 msgid "How it works"
 msgstr "Как это работает"
 
-#: inc/sunrise/views/about.php:37
+#: inc/views/about.php:37
 msgid "More videos"
 msgstr "Другие видео"
 
-#: inc/sunrise/views/about.php:39
+#: inc/views/about.php:39
 msgid "Shortcodes Ultimate Tutorial"
 msgstr "Развернутый видео урок по использованию шорткодов (англ.)"
 
-#: inc/sunrise/views/about.php:40
+#: inc/views/about.php:40
 msgid "How to use special widget"
 msgstr "Как использовать специальный виджет"
 
-#: inc/sunrise/views/cheatsheet.php:5
+#: inc/views/cheatsheet.php:5
 msgid "Shortcode"
 msgstr "Шорткоды"
 
-#: inc/sunrise/views/cheatsheet.php:6
+#: inc/views/cheatsheet.php:6
 msgid "Parameters"
 msgstr "Параметры"
 
-#: inc/sunrise/views/cheatsheet.php:7
+#: inc/views/cheatsheet.php:7
 msgid "Example"
 msgstr "Пример"
 
-#: inc/sunrise/views/cheatsheet.php:17
+#: inc/views/cheatsheet.php:17
 msgid "Demo"
 msgstr "Демо"
 
-#: inc/sunrise/views/cheatsheet.php:49
+#: inc/views/cheatsheet.php:49
 msgid "Default value"
 msgstr "Значение по умолчанию"
 
-#: inc/sunrise/views/cheatsheet.php:55
+#: inc/views/cheatsheet.php:55
 msgid "-- no parameters --"
 msgstr "-- нет параметров --"
 
-#: inc/sunrise/views/closetab.php:4
+#: inc/views/closetab.php:4
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: inc/sunrise/views/closetab.php:5
+#: inc/views/closetab.php:5
 msgid "Saving"
 msgstr "Сохранение"
 
-#: inc/sunrise/views/closetab.php:6
+#: inc/views/closetab.php:6
 msgid "Saved"
 msgstr "Сохранено"
 
-#: inc/sunrise/views/closetab.php:7
+#: inc/views/closetab.php:7
 msgid "Reset all settings to default. Are you sure? This action cannot be undone!"
 msgstr "Сброс всех настроек плагина. Вы уверены? Это действие нельзя будет отменить!"
 
-#: inc/sunrise/views/closetab.php:7
+#: inc/views/closetab.php:7
 msgid "Restore default settings"
 msgstr "Сбросить настройки"
 
-#: inc/sunrise/views/code.php:5
+#: inc/views/code.php:5
 msgid "Insert code"
 msgstr "Вставьте код"
 
-#: inc/sunrise/views/css.php:3
+#: inc/views/css.php:3
 msgid "You can see the original styles to override it"
 msgstr "Вы можете посмотреть оригинальные стили, чтобы перезаписать их"
 
-#: inc/sunrise/views/css.php:17
+#: inc/views/css.php:17
 msgid "You can use next variables in your custom CSS"
 msgstr "Вы можете использовать следующие переменные в CSS коде"
 
-#: inc/sunrise/views/css.php:18
+#: inc/views/css.php:18
 msgid "home url"
 msgstr "url главной страницы сайта"
 
-#: inc/sunrise/views/css.php:19
+#: inc/views/css.php:19
 msgid "theme url"
 msgstr "url папки с текущей темой"
 
-#: inc/sunrise/views/css.php:20
+#: inc/views/css.php:20
 msgid "plugin url"
 msgstr "url папки этого плагина"
 
-#: inc/sunrise/views/css.php:23
+#: inc/views/css.php:23
 msgid "Toggle fullscreen"
 msgstr "Полный экран"
 
-#: inc/sunrise/views/galleries.php:2
+#: inc/views/galleries.php:2
 msgid "Are you sure that you want to delete this gallery? This action can't be undone!"
 msgstr "Вы уверены, что хотите удалить эту галерею? Это действие нельзя отменить!"
 
-#: inc/sunrise/views/galleries.php:2
+#: inc/views/galleries.php:2
 msgid "Are you sure that you want to delete this image? This action can't be undone!"
 msgstr "Вы уверены, что хотите удалить это изображение? Это действие нельзя отменить!"
 
-#: inc/sunrise/views/galleries.php:4
+#: inc/views/galleries.php:4
 msgid "Create new gallery"
 msgstr "Создать новую галерею"
 
-#: inc/sunrise/views/galleries.php:17
-#: inc/sunrise/views/galleries.php:73
+#: inc/views/galleries.php:17
+#: inc/views/galleries.php:73
 msgid "Enter gallery name"
 msgstr "Введите имя галереи"
 
-#: inc/sunrise/views/galleries.php:19
-#: inc/sunrise/views/galleries.php:75
+#: inc/views/galleries.php:19
+#: inc/views/galleries.php:75
 msgid "Edit gallery"
 msgstr "Редактировать галерею"
 
-#: inc/sunrise/views/galleries.php:20
-#: inc/sunrise/views/galleries.php:76
+#: inc/views/galleries.php:20
+#: inc/views/galleries.php:76
 msgid "Save &amp; close"
 msgstr "Сохранить и закрыть"
 
-#: inc/sunrise/views/galleries.php:21
-#: inc/sunrise/views/galleries.php:51
-#: inc/sunrise/views/galleries.php:77
-#: inc/sunrise/views/galleries.php:107
+#: inc/views/galleries.php:21
+#: inc/views/galleries.php:51
+#: inc/views/galleries.php:77
+#: inc/views/galleries.php:107
 msgid "Close"
 msgstr "Закрыть"
 
-#: inc/sunrise/views/galleries.php:22
-#: inc/sunrise/views/galleries.php:42
-#: inc/sunrise/views/galleries.php:78
-#: inc/sunrise/views/galleries.php:98
+#: inc/views/galleries.php:22
+#: inc/views/galleries.php:42
+#: inc/views/galleries.php:78
+#: inc/views/galleries.php:98
 msgid "Delete"
 msgstr "Удалить"
 
-#: inc/sunrise/views/galleries.php:27
-#: inc/sunrise/views/galleries.php:83
+#: inc/views/galleries.php:27
+#: inc/views/galleries.php:83
 msgid "Add image"
 msgstr "Добавить изображение"
 
-#: inc/sunrise/views/galleries.php:41
-#: inc/sunrise/views/galleries.php:97
+#: inc/views/galleries.php:41
+#: inc/views/galleries.php:97
 msgid "Edit"
 msgstr "Редактировать"
 
-#: inc/sunrise/views/notifications.php:5
+#: inc/views/notifications.php:5
 msgid "Instructions"
 msgstr "Инструкции"
 
-#: inc/sunrise/views/notifications.php:12
-#: inc/sunrise/views/notifications.php:20
-#: inc/sunrise/views/notifications.php:28
-#: inc/sunrise/views/notifications.php:36
+#: inc/views/notifications.php:12
+#: inc/views/notifications.php:20
+#: inc/views/notifications.php:28
+#: inc/views/notifications.php:36
 msgid "Click to close"
 msgstr "Кликните чтобы закрыть"
 
-#: inc/sunrise/views/settings.php:12
+#: inc/views/settings.php:12
 msgid "For full functionality of this page it is reccomended to enable javascript."
 msgstr "Для полной функциональности этой страницы рекомендуется включить Javascript."
 
-#: inc/sunrise/views/settings.php:13
+#: inc/views/settings.php:14
 msgid "Settings reseted successfully"
 msgstr "Настройки успешно сброшены"
 
-#: inc/sunrise/views/settings.php:14
+#: inc/views/settings.php:15
 msgid "There is already default settings"
 msgstr "Настройки уже были сброшены"
 
-#: inc/sunrise/views/settings.php:15
+#: inc/views/settings.php:16
 msgid "Settings saved successfully"
 msgstr "Настройки успешно сохранены"
 
-#: inc/sunrise/views/settings.php:16
+#: inc/views/settings.php:17
 msgid "Settings not saved, because there is no changes"
 msgstr "Настройки не сохранены, нет изменений"
 
-#: inc/sunrise/views/upload.php:7
+#: inc/views/upload.php:7
 msgid "Upload"
 msgstr "Загрузить"
 

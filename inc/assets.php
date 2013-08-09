@@ -38,18 +38,17 @@
 		wp_register_script( 'su-generator', $shult->assets( 'js', 'generator.js' ),
 		                    array( 'fileupload', 'farbtastic', 'magnific-popup', 'qtip' ), $shult->version, true );
 		// Shortcodes stylesheets
-		wp_register_style( 'su-content-shortcodes', $shult->assets( 'css', 'content-shortcodes.css' ), false,
-		                   $shult->version, 'all' );
-		wp_register_style( 'su-box-shortcodes', $shult->assets( 'css', 'box-shortcodes.css' ), false, $shult->version,
+		wp_register_style( 'su-content-shortcodes', su_skin_url( 'content-shortcodes.css' ), false, $shult->version,
 		                   'all' );
-		wp_register_style( 'su-media-shortcodes', $shult->assets( 'css', 'media-shortcodes.css' ), false,
-		                   $shult->version, 'all' );
-		wp_register_style( 'su-other-shortcodes', $shult->assets( 'css', 'other-shortcodes.css' ), false,
-		                   $shult->version, 'all' );
-		wp_register_style( 'su-galleries-shortcodes', $shult->assets( 'css', 'galleries-shortcodes.css' ), false,
-		                   $shult->version, 'all' );
-		wp_register_style( 'su-players-shortcodes', $shult->assets( 'css', 'players-shortcodes.css' ), false,
-		                   $shult->version, 'all' );
+		wp_register_style( 'su-box-shortcodes', su_skin_url( 'box-shortcodes.css' ), false, $shult->version, 'all' );
+		wp_register_style( 'su-media-shortcodes', su_skin_url( 'media-shortcodes.css' ), false, $shult->version,
+		                   'all' );
+		wp_register_style( 'su-other-shortcodes', su_skin_url( 'other-shortcodes.css' ), false, $shult->version,
+		                   'all' );
+		wp_register_style( 'su-galleries-shortcodes', su_skin_url( 'galleries-shortcodes.css' ), false, $shult->version,
+		                   'all' );
+		wp_register_style( 'su-players-shortcodes', su_skin_url( 'players-shortcodes.css' ), false, $shult->version,
+		                   'all' );
 		// Shortcodes scripts
 		wp_register_script( 'swiper', $shult->assets( 'js', 'swiper.js' ), array( 'jquery' ), $shult->version, true );
 		wp_register_script( 'jplayer', $shult->assets( 'js', 'jplayer.js' ), array( 'jquery' ), $shult->version, true );
@@ -161,3 +160,19 @@
 	}
 
 	add_action( 'sunrise_page_before', 'su_add_options_page_assets' );
+
+	/**
+	 * Helper to get full URL of a skin file
+	 *
+	 * @param string $file Skin file name (ex. box-shortcodes.css)
+	 *
+	 * @return string Absolute url to skin file
+	 */
+	function su_skin_url( $file = '' ) {
+		$shult = shortcodes_ultimate();
+		$skin = $shult->get_option( 'skin' );
+		// Prepare url to skin directory
+		$url = ( $skin === 'default' ) ? $shult->assets( 'css', '' )
+			: get_stylesheet_directory_uri() . '/shortcodes/skins/' . $skin;
+		return trailingslashit( $url ) . $file;
+	}
