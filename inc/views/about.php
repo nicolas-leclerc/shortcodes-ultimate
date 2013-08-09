@@ -11,6 +11,8 @@
 		<span></span>
 		<a href="http://wordpress.org/extend/plugins/shortcodes-ultimate/changelog/" target="_blank"><?php _e( 'Changelog', $this->textdomain ); ?></a>
 		<span></span>
+		<a href="https://github.com/gndev/shortcodes-ultimate" target="_blank"><?php _e( 'GitHub', $this->textdomain ); ?></a>
+		<span></span>
 		<a href="http://support.gndev.info/feedback/" target="_blank"><?php _e( 'Contact author', $this->textdomain ); ?></a>
 	</div>
 	<div class="su-about-column">
