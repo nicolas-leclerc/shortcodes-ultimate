@@ -365,7 +365,6 @@ jQuery( document ).ready( function ( $ ) {
 				$preview.addClass( 'su-preview-loading' ).html( '' ).show();
 			},
 			success: function ( data ) {
-				console.log( data );
 				// Hide loading animation and set new HTML
 				$preview.html( data ).removeClass( 'su-preview-loading' );
 			},

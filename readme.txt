@@ -2,7 +2,7 @@
 Contributors: gn_themes
 License: GPL3
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MMA2VA7JDXWDY
-Tags: shortcode, shortcodes, short code, shortcodes, tab, tabs, button, buttons, jquery, box, boxes, toggle, spoiler, column, columns, services, service, pullquote, list, lists, frame, images, image, links, fancy, fancy link, fancy links, fancy buttons, jquery tabs, accordeon, slider, nivo, nivo slider, plugin, admin, photoshop, gallery, bloginfo, list pages, sub pages, navigation, siblings pages, children pages, permalink, permalinks, feed, document, member, members, documents, jcarousel, rss
+Tags: shortcode, shortcodes, short code, video, responsive, responsive video, youtube, vimeo, audio, mp3, tab, tabs, button, buttons, jquery, box, boxes, toggle, spoiler, column, columns, services, service, pullquote, list, lists, images, image, links, fancy, fancy link, fancy links, fancy buttons, jquery tabs, accordion, slider, plugin, admin, gallery, bloginfo, list pages, sub pages, navigation, siblings pages, children pages, permalink, permalinks, feed, document, member, members, guests, membership, documents, carousel, rss, touch, icon, icons
 Requires at least: 3.4
 Tested up to: 4.0
 Stable tag: 4.0.0
@@ -14,11 +14,12 @@ Supercharge your WordPress theme with mega pack of shortcodes
 
 [Shortcodes Ultimate](http://gndev.info/shortcodes-ultimate/) is WordPress plugin that provides mega pack of shortcodes.
 
-With this plugin you can easily create buttons, boxes, different sliders and much, much more. Turn your free theme to premium in just a few clicks. Using Shortcodes Ultimate you can quickly and easily retrieve premium themes features and display it on your site. See screenshots for more information.
+With this plugin you can easily create tabs, buttons, boxes, different sliders, responsive videos and much, much more. Turn your free theme to premium in just a few clicks. Using Shortcodes Ultimate you can quickly and easily retrieve premium themes features and display it on your site. See screenshots for more information.
 
 = Features =
 * Shortcodes Generator
 * 30+ amazing shortcodes
+* Modern responsive design
 * Power of CSS3 transitions
 * [Addons](http://gndev.info/shortcodes-ultimate/addons/)
 * Custom CSS editor with syntax highlight
@@ -96,10 +97,11 @@ Upgrade normally via your Wordpress admin -> Plugins panel.
 * [Official plugin page](http://gndev.info/shortcodes-ultimate/)
 * [Shortcodes API](http://support.gndev.info/docs/shortcodes-ultimate-api/)
 * Completely reorganized code. Added and removed some shortcodes
-* For security geeks: timthumb.php replaced by native WordPress mechanism
-* For speed-up geeks: completely rewritten assets mechanism. Now css and js files enqueued on page depend on used shortcodes
+* For security maniacs: timthumb.php replaced by native WordPress mechanism
+* For speed-up maniacs: completely rewritten assets mechanism. Now css and js files included on page depend on used shortcodes
 * Added new shortcode [posts]. This is awesome and flexible mechanism to display your content in many different ways
 * Now you can create your own custom skins for shortcodes. Useful for theme integrations
+* Columns, youtube player, vimeo player and custom audio player is now fully responsive
 
 = 3.9 =
 * More screencasts

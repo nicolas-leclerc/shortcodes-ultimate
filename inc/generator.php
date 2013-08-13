@@ -52,6 +52,7 @@
 						<a href="#" data-filter="content"><?php _e( 'Content', $shult->textdomain ); ?></a>
 						<a href="#" data-filter="box"><?php _e( 'Boxes', $shult->textdomain ); ?></a>
 						<a href="#" data-filter="media"><?php _e( 'Media', $shult->textdomain ); ?></a>
+						<a href="#" data-filter="gallery"><?php _e( 'Gallery', $shult->textdomain ); ?></a>
 						<a href="#" data-filter="other"><?php _e( 'Other', $shult->textdomain ); ?></a>
 					</div>
 					<div id="su-generator-choices">

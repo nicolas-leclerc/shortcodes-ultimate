@@ -171,8 +171,9 @@
 	function su_skin_url( $file = '' ) {
 		$shult = shortcodes_ultimate();
 		$skin = $shult->get_option( 'skin' );
+		$uploads = wp_upload_dir();
+		$uploads = $uploads['baseurl'];
 		// Prepare url to skin directory
-		$url = ( $skin === 'default' ) ? $shult->assets( 'css', '' )
-			: get_stylesheet_directory_uri() . '/shortcodes/skins/' . $skin;
+		$url = ( $skin === 'default' ) ? $shult->assets( 'css', '' ) : $uploads . '/shortcodes-ultimate-skins/' . $skin;
 		return trailingslashit( $url ) . $file;
 	}

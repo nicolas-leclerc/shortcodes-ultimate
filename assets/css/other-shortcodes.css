@@ -1,17 +1,15 @@
 /*** Shortcodes Ultimate - other elements ***/
 
-
 /*		Private
 ---------------------------------------------------------------*/
 
 .su-private { margin: 0 0 1.5em 0 }
 
-
 /*		Members
 ---------------------------------------------------------------*/
 
-.su-members { margin-bottom: 1.5em }
-.su-members-style-default {
+.su-members {
+	margin-bottom: 1.5em;
 	padding: 1em;
 	border-top: 1px solid #fc9;
 	border-bottom: 1px solid #fc9;
@@ -19,29 +17,16 @@
 	color: #333;
 	text-align: center;
 }
-.su-members-style-metro {
-	padding: 1em;
-	background: #2D89EF;
-	color: #fff;
-	font-size: 1.1em;
-}
-.su-members-style-metro a {
-	color: #fff;
-	text-decoration: underline;
-}
-.su-members-style-simple {}
-
 
 /*		Guests
 ---------------------------------------------------------------*/
 
 .su-guests { margin-bottom: 1.5em }
 
-
 /*		Posts
 ---------------------------------------------------------------*/
 
-.su-posts-default-loop {}
+.su-posts-default-loop { }
 .su-posts-default-loop .su-post {
 	margin-bottom: 2.5em;
 	line-height: 1.5;
@@ -77,7 +62,7 @@
 .su-posts-default-loop .su-post-excerpt { margin-bottom: 0.5em }
 .su-posts-default-loop .su-post-excerpt p:last-child { margin-bottom: 0 }
 .su-posts-default-loop .su-post-comments-link { font-size: 0.9em }
-.su-posts-teaser-loop {}
+.su-posts-teaser-loop { }
 .su-posts-teaser-loop .su-post {
 	margin-bottom: 1.5em;
 	line-height: 1.2;
@@ -114,7 +99,7 @@
 	font-weight: normal;
 	clear: none;
 }
-.su-posts-single-post {}
+.su-posts-single-post { }
 .su-posts-single-post .su-post {
 	margin-bottom: 2.5em;
 	line-height: 1.5;

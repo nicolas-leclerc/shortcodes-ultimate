@@ -1,9 +1,9 @@
 <?php
-	$template_skins_path = path_join( get_template_directory(), 'shortcodes/skins/' );
+	$upload_dir = wp_upload_dir();
+	$kins_path = trailingslashit( path_join( $upload_dir['basedir'], 'shortcodes-ultimate-skins' ) );
 	$option['options'] = array( 'default' );
-	foreach ( glob( $template_skins_path . '*', GLOB_ONLYDIR ) as $dir ) {
-		$dir = str_replace( $template_skins_path, '', $dir );
-		$option['options'][] = $dir;
+	foreach ( glob( $kins_path . '*', GLOB_ONLYDIR ) as $dir ) {
+		$option['options'][] = str_replace( $kins_path, '', $dir );
 	}
 	$trigger = ( $option['trigger'] ) ? ' data-trigger="true" data-trigger-type="select"' : '';
 	$triggable = ( $option['triggable'] ) ?

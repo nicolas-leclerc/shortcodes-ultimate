@@ -14,18 +14,31 @@
 				'type' => 'wrap',
 				'group' => 'content',
 				'atts' => array(
-					'style' => array(
+					'size' => array(
+						'type' => 'number',
+						'min' => 1,
+						'max' => 18,
+						'step' => 1,
+						'default' => 3,
+						'name' => __( 'Size', $shult->textdomain ), 'desc' => __( 'Select heading size', $shult->textdomain )
+					),
+					'align' => array(
 						'type' => 'select',
 						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'thin' => __( 'Thin', $shult->textdomain )
+							'left' => __( 'Left', $shult->textdomain ),
+							'center' => __( 'Center', $shult->textdomain ),
+							'right' => __( 'Right', $shult->textdomain )
 						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ), 'desc' => __( 'Choose heading style preset', $shult->textdomain )
+						'default' => 'center',
+						'name' => __( 'Align', $shult->textdomain ), 'desc' => __( 'Heading text alignment', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
-				'usage' => '[heading] Content [/heading]<br/>[heading style="metro"] Content [/heading]', 'content' => __( 'Heading text', $shult->textdomain ),
+				'usage' => '[heading] Content [/heading]<br/>[heading size="5"] Content [/heading]', 'content' => __( 'Heading text', $shult->textdomain ),
 				'desc' => __( 'Styled heading', $shult->textdomain )
 			),
 			# tabs
@@ -34,15 +47,16 @@
 				'type' => 'wrap',
 				'group' => 'box',
 				'atts' => array(
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'vertical' => __( 'Vertical', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ), 'desc' => __( 'Choose tabs style preset', $shult->textdomain )
+					'vertical' => array(
+						'type' => 'switch',
+						'default' => 'no',
+						'name' => __( 'Vertical', $shult->textdomain ),
+						'desc' => __( 'Show tabs vertically', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[tabs style="default"] [tab title="Tab name"] Tab content [/tab] [/tabs]',
@@ -60,6 +74,11 @@
 						'default' => __( 'Tab name', $shult->textdomain ),
 						'name' => __( 'Title', $shult->textdomain ),
 						'desc' => __( 'Enter tab name', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[tabs] [tab title="Tab name"] Tab content [/tab] [/tabs]', 'content' => __( 'Tab content', $shult->textdomain ),
@@ -82,14 +101,10 @@
 						'name' => __( 'Open', $shult->textdomain ),
 						'desc' => __( 'Is spoiler content visible by default', $shult->textdomain )
 					),
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ), 'desc' => __( 'Select spoiler style preset', $shult->textdomain )
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[spoiler title="Spoiler title"] Hidden text [/spoiler]', 'content' => __( 'Hidden content', $shult->textdomain ), 'desc' => __( 'Spoiler with hidden content', $shult->textdomain )
@@ -99,7 +114,13 @@
 				'name' => __( 'Accordion', $shult->textdomain ),
 				'type' => 'wrap',
 				'group' => 'box',
-				'atts' => array( ),
+				'atts' => array(
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
+					)
+				),
 				'usage' => '[accordion]<br/>[spoiler open="yes"] content [/spoiler]<br/>[spoiler] content [/spoiler]<br/>[spoiler] content [/spoiler]<br/>[/accordion]',
 				'content' => __( "[spoiler]Content[/spoiler]\n[spoiler]Content[/spoiler]\n[spoiler]Content[/spoiler]", $shult->textdomain ), 'desc' => __( 'Accordion with spoilers', $shult->textdomain )
 			),
@@ -109,16 +130,6 @@
 				'type' => 'single',
 				'group' => 'content',
 				'atts' => array(
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'light' => __( 'Light', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ), 'desc' => __( 'Select divider style preset', $shult->textdomain )
-					),
 					'top' => array(
 						'type' => 'switch',
 						'default' => 'yes',
@@ -129,6 +140,11 @@
 						'values' => array( ),
 						'default' => __( 'Go to top', $shult->textdomain ),
 						'name' => __( 'Link text', $shult->textdomain ), 'desc' => __( 'Text for the GO TOP link', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[divider top="yes" text="Go to top"]',
@@ -147,6 +163,11 @@
 						'step' => 5,
 						'default' => 20,
 						'name' => __( 'Height', $shult->textdomain ), 'desc' => __( 'Height of the spacer in pixels', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[spacer size="20"]',
@@ -170,6 +191,11 @@
 						'values' => array( ),
 						'default' => '#000000',
 						'name' => __( 'Text color', $shult->textdomain ), 'desc' => __( 'Highlighted text color', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[highlight background="#DDFF99" color="#000000"] Content [/highlight]', 'content' => __( 'Highlighted text', $shult->textdomain ),
@@ -194,6 +220,11 @@
 						'default' => 'default',
 						'name' => __( 'Type', $shult->textdomain ),
 						'desc' => __( 'Style of the label', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[label type="info"] Information [/label]', 'content' => __( 'Label', $shult->textdomain ),
@@ -205,17 +236,6 @@
 				'type' => 'wrap',
 				'group' => 'box',
 				'atts' => array(
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'simple' => __( 'Simple', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ),
-						'desc' => __( 'Quote style preset', $shult->textdomain )
-					),
 					'cite' => array(
 						'values' => array( ),
 						'default' => '',
@@ -227,6 +247,11 @@
 						'default' => '',
 						'name' => __( 'Cite url', $shult->textdomain ),
 						'desc' => __( 'Url of the quote author. Leave empty to disable link', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[quote style="default"] Content [/quote]', 'content' => __( 'Quote', $shult->textdomain ),
@@ -238,17 +263,6 @@
 				'type' => 'wrap',
 				'group' => 'box',
 				'atts' => array(
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'simple' => __( 'Simple', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ),
-						'desc' => __( 'Choose style preset for pullquote', $shult->textdomain )
-					),
 					'align' => array(
 						'type' => 'select',
 						'values' => array(
@@ -257,6 +271,11 @@
 						),
 						'default' => 'left',
 						'name' => __( 'Align', $shult->textdomain ), 'desc' => __( 'Pullquote alignment (float)', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[pullquote align="left"] Content [/pullquote]', 'content' => __( 'Pullquote', $shult->textdomain ),
@@ -272,7 +291,7 @@
 						'type' => 'select',
 						'values' => array(
 							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
+							'flat' => __( 'Flat', $shult->textdomain ),
 							'light' => __( 'Light', $shult->textdomain ),
 							'simple' => __( 'Simple', $shult->textdomain )
 						),
@@ -283,6 +302,11 @@
 						'type' => 'select',
 						'values' => array( 1, 2, 3, 4, 5 ), 'default' => 3,
 						'name' => __( 'Size', $shult->textdomain ), 'desc' => __( 'Choose dropcap size', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[dropcap style="default"]D[/dropcap]ropcap', 'content' => __( 'D', $shult->textdomain ),
@@ -294,15 +318,10 @@
 				'type' => 'wrap',
 				'group' => 'box',
 				'atts' => array(
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ), 'align-left' => __( 'Align to left', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ),
-						'desc' => __( 'Style preset for the inner columns', $shult->textdomain )
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[row]<br/>[column size="1/2"] 50% [/column]<br/>[column size="1/4"] 25% [/column]<br/>[column size="1/4"] 25% [/column]<br/>[/row]',
@@ -333,6 +352,11 @@
 						'default' => '1/2',
 						'name' => __( 'Size', $shult->textdomain ),
 						'desc' => __( 'Select column width. This width will be calculated depend page width', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[row]<br/>[column size="6"] 50% [/column]<br/>[column size="3"] 25% [/column]<br/>[column size="3"] 25% [/column]<br/>[/row]', 'content' => __( 'Column content', $shult->textdomain ), 'desc' => __( 'Flexible and responsive columns', $shult->textdomain )
@@ -364,6 +388,11 @@
 						),
 						'default' => 'star',
 						'name' => __( 'Style', $shult->textdomain ), 'desc' => __( 'List items style/icons', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[list style="check"] <ul> <li> List item </li> </ul> [/list]',
@@ -395,7 +424,7 @@
 						'type' => 'select',
 						'values' => array(
 							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
+							'flat' => __( 'Flat', $shult->textdomain ),
 							'soft' => __( 'Soft', $shult->textdomain ),
 							'glass' => __( 'Glass', $shult->textdomain ),
 							'bubbles' => __( 'Bubbles', $shult->textdomain ),
@@ -466,9 +495,9 @@
 						'default' => 'top-left', 'name' => __( 'Text shadow position', $shult->textdomain ), 'desc' => __( 'Position of button text shadow', $shult->textdomain )
 					),
 					'class' => array(
-						'values' => array( ),
 						'default' => '',
-						'name' => __( 'CSS class', $shult->textdomain ), 'desc' => __( 'Extra CSS class for button', $shult->textdomain )
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[button url="#" background="#b00" size="3" style="default"] Button text [/button]', 'content' => __( 'Button text', $shult->textdomain ),
@@ -498,6 +527,11 @@
 						'default' => 32,
 						'name' => __( 'Icon size', $shult->textdomain ),
 						'desc' => __( 'Size of the uploaded icon in pixels', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[service title="Service title" icon="service.png" size="32"] Service description [/service]', 'content' => __( 'Service description', $shult->textdomain ), 'desc' => __( 'Service box with title', $shult->textdomain )
@@ -545,6 +579,11 @@
 						'default' => '3',
 						'name' => __( 'Radius', $shult->textdomain ),
 						'desc' => __( 'Box corners radius', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[box title="Box title"] Content [/box]', 'content' => __( 'Box content', $shult->textdomain ), 'desc' => __( 'Colored box with caption', $shult->textdomain )
@@ -573,6 +612,11 @@
 						'values' => array( '0', '3', '5', '10', '20' ),
 						'default' => '3',
 						'name' => __( 'Radius', $shult->textdomain ), 'desc' => __( 'Note corners radius', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[note background="#FFCC00"] Content [/note]', 'content' => __( 'Note text', $shult->textdomain ),
@@ -583,7 +627,13 @@
 				'name' => __( 'Private', $shult->textdomain ),
 				'type' => 'wrap',
 				'group' => 'other',
-				'atts' => array( ),
+				'atts' => array(
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
+					)
+				),
 				'usage' => '[private] Private content [/private]', 'content' => __( 'Private note text', $shult->textdomain ), 'desc' => __( 'Private note for post authors', $shult->textdomain )
 			),
 			# youtube
@@ -612,15 +662,26 @@
 						'min' => 0,
 						'max' => 10000,
 						'step' => 20,
-						'default' => 300,
+						'default' => 400,
 						'name' => __( 'Height', $shult->textdomain ),
 						'desc' => __( 'Player height', $shult->textdomain )
+					),
+					'responsive' => array(
+						'type' => 'switch',
+						'default' => 'yes',
+						'name' => __( 'Responsive', $shult->textdomain ),
+						'desc' => __( 'Ignore width and height parameters and make player responsive', $shult->textdomain )
 					),
 					'autoplay' => array(
 						'type' => 'switch',
 						'default' => 'no',
 						'name' => __( 'Autoplay', $shult->textdomain ),
 						'desc' => __( 'Play video automatically when page is loaded', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[youtube url="http://www.youtube.com/watch?v=NbE8INOjTKM"]', 'desc' => __( 'YouTube video', $shult->textdomain )
@@ -650,15 +711,26 @@
 						'min' => 0,
 						'max' => 10000,
 						'step' => 20,
-						'default' => 300,
+						'default' => 400,
 						'name' => __( 'Height', $shult->textdomain ),
 						'desc' => __( 'Player height', $shult->textdomain )
+					),
+					'responsive' => array(
+						'type' => 'switch',
+						'default' => 'yes',
+						'name' => __( 'Responsive', $shult->textdomain ),
+						'desc' => __( 'Ignore width and height parameters and make player responsive', $shult->textdomain )
 					),
 					'autoplay' => array(
 						'type' => 'switch',
 						'default' => 'no',
 						'name' => __( 'Autoplay', $shult->textdomain ),
 						'desc' => __( 'Play video automatically when page is loaded', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[vimeo url="http://vimeo.com/21294655"]', 'desc' => __( 'Vimeo video', $shult->textdomain )
@@ -675,24 +747,11 @@
 						'name' => __( 'File', $shult->textdomain ),
 						'desc' => __( 'Audio file url. Supported formats: mp3, ogg', $shult->textdomain )
 					),
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'button' => __( 'Button', $shult->textdomain ),
-							'hidden' => __( 'Hidden', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ),
-						'desc' => __( 'Player style preset', $shult->textdomain )
-					),
 					'width' => array(
-						'type' => 'select',
-						'values' => array( 'auto', '200px', '50%' ),
-						'default' => 'auto',
+						'values' => array(),
+						'default' => '100%',
 						'name' => __( 'Width', $shult->textdomain ),
-						'desc' => __( 'Player width. You can specify width in percents and player will be responsive', $shult->textdomain )
+						'desc' => __( 'Player width. You can specify width in percents and player will be responsive. Example values: <b%value>200px</b>, <b%value>100&#37;</b>', $shult->textdomain )
 					),
 					'autoplay' => array(
 						'type' => 'switch',
@@ -705,6 +764,11 @@
 						'default' => 'no',
 						'name' => __( 'Loop', $shult->textdomain ),
 						'desc' => __( 'Repeat when playback is ended', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[audio url="http://example.com/audio.mp3"]',
@@ -733,17 +797,6 @@
 						'default' => '',
 						'name' => __( 'Title', $shult->textdomain ),
 						'desc' => __( 'Player title', $shult->textdomain )
-					),
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'minimal' => __( 'Minimal', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ),
-						'desc' => __( 'Player style preset', $shult->textdomain )
 					),
 					'width' => array(
 						'type' => 'number',
@@ -780,6 +833,11 @@
 						'default' => 'no',
 						'name' => __( 'Loop', $shult->textdomain ),
 						'desc' => __( 'Repeat when playback is ended', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[video url="http://example.com/video.mp4"]',
@@ -791,22 +849,16 @@
 				'type' => 'mixed',
 				'group' => 'content',
 				'atts' => array(
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'minimal' => __( 'Minimal', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ),
-						'desc' => __( 'Table style preset', $shult->textdomain )
-					),
 					'url' => array(
 						'type' => 'upload',
 						'default' => '',
 						'name' => __( 'CSV file', $shult->textdomain ),
 						'desc' => __( 'Upload CSV file if you want to create HTML-table from file', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[table style="default"] <table> ... </table> [/table]<br/>[table style="default" url="http://example.com/file.csv"] [/table]',
@@ -834,6 +886,11 @@
 						'name' => __( 'Target', $shult->textdomain ),
 						'desc' => __( 'Link target. blank - link will be opened in new window/tab', $shult->textdomain )
 					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
+					)
 				),
 				'usage' => '[permalink id=52]<br/>[permalink id="52" target="blank"] Content [/permalink]',
 				'content' => '', 'desc' => __( 'Permalink to specified post/page', $shult->textdomain )
@@ -844,17 +901,6 @@
 				'type' => 'wrap',
 				'group' => 'other',
 				'atts' => array(
-					'style' => array(
-						'type' => 'select',
-						'values' => array(
-							'default' => __( 'Default', $shult->textdomain ),
-							'metro' => __( 'Metro', $shult->textdomain ),
-							'simple' => __( 'Simple', $shult->textdomain )
-						),
-						'default' => 'default',
-						'name' => __( 'Style', $shult->textdomain ),
-						'desc' => __( 'Box style preset. This box will be shown for not logged users only', $shult->textdomain )
-					),
 					'message' => array(
 						'values' => array( ),
 						'default' => __( 'This content is for registered users only. Please %login%.', $shult->textdomain ),
@@ -864,6 +910,11 @@
 						'values' => array( ),
 						'default' => __( 'login', $shult->textdomain ),
 						'name' => __( 'Login link text', $shult->textdomain ), 'desc' => __( 'Text for the login link', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[members style="default"] Content for logged members [/members]', 'content' => __( 'Content for logged members', $shult->textdomain ),
@@ -874,7 +925,13 @@
 				'name' => __( 'Guests', $shult->textdomain ),
 				'type' => 'wrap',
 				'group' => 'other',
-				'atts' => array( ),
+				'atts' => array(
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
+					)
+				),
 				'usage' => '[guests] Content for guests [/guests]', 'content' => __( 'Content for guests', $shult->textdomain ), 'desc' => __( 'Content for guests only', $shult->textdomain )
 			),
 			# feed
@@ -893,6 +950,11 @@
 						'type' => 'select',
 						'values' => array( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ), 'default' => 3,
 						'name' => __( 'Limit', $shult->textdomain ), 'desc' => __( 'Number of items to show', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[feed url="http://rss1.smashingmagazine.com/feed/" limit="5"]', 'desc' => __( 'Feed grabber', $shult->textdomain )
@@ -907,6 +969,11 @@
 						'values' => array( ),
 						'default' => '',
 						'name' => __( 'Menu name', $shult->textdomain ), 'desc' => __( 'Custom menu name. Ex: Main menu', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[menu name="Main menu"]', 'desc' => __( 'Custom menu by name', $shult->textdomain )
@@ -928,6 +995,11 @@
 						'default' => '',
 						'name' => __( 'Parent ID', $shult->textdomain ),
 						'desc' => __( 'ID of the parent page. Leave blank to use current page', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[subpages]<br/>[subpages depth="2" p="122"]', 'desc' => __( 'List of sub pages', $shult->textdomain )
@@ -943,6 +1015,11 @@
 						'values' => array( 1, 2, 3 ), 'default' => 1,
 						'name' => __( 'Depth', $shult->textdomain ),
 						'desc' => __( 'Max depth level', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[siblings]<br/>[siblings depth="2"]', 'desc' => __( 'List of cureent page siblings', $shult->textdomain )
@@ -976,6 +1053,17 @@
 						'default' => 600,
 						'name' => __( 'Height', $shult->textdomain ),
 						'desc' => __( 'Viewer height', $shult->textdomain )
+					),
+					'responsive' => array(
+						'type' => 'switch',
+						'default' => 'yes',
+						'name' => __( 'Responsive', $shult->textdomain ),
+						'desc' => __( 'Ignore width and height parameters and make viewer responsive', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[document url="file.doc" width="600" height="400"]', 'desc' => __( 'Document viewer by Google', $shult->textdomain )
@@ -1004,12 +1092,23 @@
 						'name' => __( 'Height', $shult->textdomain ),
 						'desc' => __( 'Map height', $shult->textdomain )
 					),
+					'responsive' => array(
+						'type' => 'switch',
+						'default' => 'yes',
+						'name' => __( 'Responsive', $shult->textdomain ),
+						'desc' => __( 'Ignore width and height parameters and make map responsive', $shult->textdomain )
+					),
 					'address' => array(
 						'values' => array( ),
 						'default' => '',
 						'name' => __( 'Marker', $shult->textdomain ),
 						'desc' => __( 'Address for the marker. You can type it in any language', $shult->textdomain )
 					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
+					)
 				),
 				'usage' => '[gmap width="600" height="400" address="New York"]', 'desc' => __( 'Maps by Google', $shult->textdomain )
 			),
@@ -1017,7 +1116,7 @@
 			'slider' => array(
 				'name' => __( 'Slider', $shult->textdomain ),
 				'type' => 'single',
-				'group' => 'media',
+				'group' => 'gallery',
 				'atts' => array(
 					'gallery' => array(
 						'type' => 'gallery',
@@ -1039,6 +1138,12 @@
 						'step' => 20,
 						'default' => 300,
 						'name' => __( 'Height', $shult->textdomain ), 'desc' => __( 'Slider height (in pixels)', $shult->textdomain )
+					),
+					'responsive' => array(
+						'type' => 'switch',
+						'default' => 'yes',
+						'name' => __( 'Responsive', $shult->textdomain ),
+						'desc' => __( 'Ignore width and height parameters and make slider responsive', $shult->textdomain )
 					),
 					'title' => array(
 						'type' => 'switch',
@@ -1088,6 +1193,11 @@
 						'default' => 'yes',
 						'name' => __( 'Links target', $shult->textdomain ),
 						'desc' => __( 'Open slides links in new window/tab', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[slider gallery="1"]', 'desc' => __( 'Customizable image slider', $shult->textdomain )
@@ -1096,7 +1206,7 @@
 			'carousel' => array(
 				'name' => __( 'Carousel', $shult->textdomain ),
 				'type' => 'single',
-				'group' => 'media',
+				'group' => 'gallery',
 				'atts' => array(
 					'gallery' => array(
 						'type' => 'gallery',
@@ -1118,6 +1228,12 @@
 						'step' => 20,
 						'default' => 100,
 						'name' => __( 'Height', $shult->textdomain ), 'desc' => __( 'Carousel height (in pixels)', $shult->textdomain )
+					),
+					'responsive' => array(
+						'type' => 'switch',
+						'default' => 'yes',
+						'name' => __( 'Responsive', $shult->textdomain ),
+						'desc' => __( 'Ignore width and height parameters and make carousel responsive', $shult->textdomain )
 					),
 					'items' => array(
 						'type' => 'number',
@@ -1183,6 +1299,11 @@
 						'default' => 'yes',
 						'name' => __( 'Links target', $shult->textdomain ),
 						'desc' => __( 'Open carousel links in new window/tab', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[carousel gallery="1"]', 'desc' => __( 'Customizable image carousel', $shult->textdomain )
@@ -1191,7 +1312,7 @@
 			'custom_gallery' => array(
 				'name' => __( 'Gallery', $shult->textdomain ),
 				'type' => 'single',
-				'group' => 'media',
+				'group' => 'gallery',
 				'atts' => array(
 					'gallery' => array(
 						'type' => 'gallery',
@@ -1229,6 +1350,11 @@
 						'type' => 'switch',
 						'default' => 'yes',
 						'name' => __( 'Links target', $shult->textdomain ), 'desc' => __( 'Open links in new window/tab', $shult->textdomain )
+					),
+					'class' => array(
+						'default' => '',
+						'name' => __( 'Class', $shult->textdomain ),
+						'desc' => __( 'Extra CSS class', $shult->textdomain )
 					)
 				),
 				'usage' => '[custom_gallery gallery="1"]', 'desc' => __( 'Customizable image gallery', $shult->textdomain )
@@ -1360,7 +1486,7 @@
 						'default' => 'no',
 						'name' => __( 'Ignore sticky', $shult->textdomain ),
 						'desc' => __( 'Select Yes to ignore posts that is sticked', $shult->textdomain )
-					),
+					)
 				),
 				'usage' => '[posts template="templates/posts.php"]',
 				'desc' => __( 'Custom posts query with customizable template', $shult->textdomain )
@@ -1385,4 +1511,3 @@
 	}
 
 	add_action( 'init', 'su_register_shortcodes' );
-?>

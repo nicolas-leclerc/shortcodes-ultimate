@@ -3,6 +3,7 @@
 	// Add activation and initialization hooks
 	add_action( 'plugins_loaded', 'su_init' );
 	register_activation_hook( SU_PLUGIN_FILE, 'su_check_version' );
+	register_activation_hook( SU_PLUGIN_FILE, 'su_create_skins_dir' );
 
 	// Define global plugin instance
 	$shult = null;
@@ -36,8 +37,6 @@
 		__( 'Supercharge your WordPress theme with mega pack of shortcodes', $shult->textdomain );
 		// Add links to plugins dashboard
 		add_filter( 'plugin_action_links_' . $shult->basename, 'su_plugin_actions_links', -10 );
-		// Reset skin when theme is changed
-		add_action( 'switch_theme', 'su_reset_skin' );
 	}
 
 	/**
@@ -72,6 +71,15 @@
 	}
 
 	/**
+	 * Create empty directory for skins if not exists
+	 */
+	function su_create_skins_dir() {
+		$upload_dir = wp_upload_dir();
+		$path = trailingslashit( path_join( $upload_dir['basedir'], 'shortcodes-ultimate-skins' ) );
+		if ( !file_exists( $path ) ) mkdir( $path, 0755 );
+	}
+
+	/**
 	 * Plugin actions links
 	 */
 	function su_plugin_actions_links( $links ) {
@@ -79,14 +87,6 @@
 		$links[] = '<a href="' . $shult->admin_url . '#tab-1">' . __( 'Settings', $shult->textdomain ) . '</a>';
 		$links[] = '<a href="' . $shult->admin_url . '#tab-0"><b>' . __( 'Welcome', $shult->textdomain ) . '</b></a>';
 		return $links;
-	}
-
-	/**
-	 * Reset skin to default
-	 */
-	function su_reset_skin() {
-		$shult = shortcodes_ultimate();
-		$shult->update_option( 'skin', 'default' );
 	}
 
 	/**
