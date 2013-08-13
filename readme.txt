@@ -101,7 +101,7 @@ Upgrade normally via your Wordpress admin -> Plugins panel.
 * For speed-up maniacs: completely rewritten assets mechanism. Now css and js files included on page depend on used shortcodes
 * Added new shortcode [posts]. This is awesome and flexible mechanism to display your content in many different ways
 * Now you can create your own custom skins for shortcodes. Useful for theme integrations
-* Columns, youtube player, vimeo player and custom audio player is now fully responsive
+* Columns, google maps, google document viewer, youtube player, vimeo player and custom audio player is now fully responsible
 
 = 3.9 =
 * More screencasts
