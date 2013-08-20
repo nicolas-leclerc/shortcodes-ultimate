@@ -2,22 +2,40 @@
 
 	/**
 	 * Generator button
+	 *
+	 * @param string $target
+	 * @param
+	 * @param string $class
+	 * @param bool   $icon
+	 * @param bool   $echo
+	 *
+	 * @return string
 	 */
-	function su_generator_button( $target = 'content' ) {
+	function su_generator_button( $target = 'content', $text = null, $class = 'button', $icon = true, $echo = true ) {
 		$shult = shortcodes_ultimate();
+		// Prepare text
+		$text = ( is_null( $text ) ) ? __( 'Insert shortcode', $shult->textdomain ) : $text;
+		// Prepare icon
+		$icon = ( $icon ) ? '<img src="' . $shult->assets( 'images', 'generator/button.png' ) . '" alt="" /> ' : '';
 		// Print button
-		echo '<a href="#su-generator" class="su-generator-button button" title="' .
-			__( 'Insert shortcode', $shult->textdomain ) . '" data-target="' . $target . '"><img src="' .
-			$shult->assets( 'images', 'generator/button.png' ) . '" alt="" /> ' .
-			__( 'Insert shortcode', $shult->textdomain ) . '</a>';
+		$button =
+			'<a href="#su-generator" class="su-generator-button ' . $class . '" title="' . $text . '" data-target="' .
+			$target . '">' . $icon . $text . '</a>';
 		// Show generator popup
 		add_action( 'wp_footer', 'su_generator_popup' );
 		add_action( 'admin_footer', 'su_generator_popup' );
 		// Request assets
 		su_query_asset( 'css', array( 'farbtastic', 'magnific-popup', 'su-generator' ) );
-		su_query_asset( 'js',
-		                array( 'jquery', 'jquery-ui-widget', 'iframe-transport', 'fileupload', 'farbtastic', 'qtip',
-		                       'magnific-popup', 'su-generator' ) );
+		su_query_asset( 'js', array( 'jquery',
+		                             'jquery-ui-widget',
+		                             'iframe-transport',
+		                             'fileupload',
+		                             'farbtastic',
+		                             'qtip',
+		                             'magnific-popup',
+		                             'su-generator' ) );
+		if ( $echo ) echo $button;
+		else return $button;
 	}
 
 	add_action( 'media_buttons', 'su_generator_button', 100 );
@@ -32,36 +50,35 @@
 			<div id="su-generator">
 				<div id="su-generator-header">
 					<div id="su-generator-tools">
-						<a href="<?php echo $shult->admin_url; ?>#tab-1" target="_blank" title="<?php _e( 'Settings',
-						                                                                                  $shult->textdomain ); ?>"><?php _e( 'Plugin settings',
-						                                                                                                                      $shult->textdomain ); ?></a>
-						<span></span>
-						<a href="http://gndev.info/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Plugin homepage',
-						                                                                                  $shult->textdomain ); ?>"><?php _e( 'Plugin homepage',
-						                                                                                                                      $shult->textdomain ); ?></a>
-						<span></span>
-						<a href="http://wordpress.org/support/plugin/shortcodes-ultimate/" target="_blank" title="<?php _e( 'Support forums',
-						                                                                                                    $shult->textdomain ); ?>"><?php _e( 'Support forums',
-						                                                                                                                                        $shult->textdomain ); ?></a>
+						<a href="<?php echo $shult->admin_url; ?>#tab-1" target="_blank"
+							title="<?php _e( 'Settings', $shult->textdomain ); ?>"><?php _e( 'Plugin settings',
+						                                                                     $shult->textdomain ); ?></a>
+						<span></span> <a href="http://gndev.info/shortcodes-ultimate/" target="_blank"
+							title="<?php _e( 'Plugin homepage', $shult->textdomain ); ?>"><?php _e( 'Plugin homepage',
+						                                                                            $shult->textdomain ); ?></a>
+						<span></span> <a href="http://wordpress.org/support/plugin/shortcodes-ultimate/" target="_blank"
+							title="<?php _e( 'Support forums', $shult->textdomain ); ?>"><?php _e( 'Support forums',
+						                                                                           $shult->textdomain ); ?></a>
 					</div>
-					<input type="text" name="su_generator_search" id="su-generator-search" value="" placeholder="<?php _e( 'Search for shortcodes',
-					                                                                                                       $shult->textdomain ); ?>" />
+					<input type="text" name="su_generator_search" id="su-generator-search" value=""
+						placeholder="<?php _e( 'Search for shortcodes', $shult->textdomain ); ?>" />
 					<div id="su-generator-filter">
-						<strong><?php _e( 'Filter by type', $shult->textdomain ); ?></strong>
-						<a href="#" data-filter="all"><?php _e( 'All', $shult->textdomain ); ?></a>
-						<a href="#" data-filter="content"><?php _e( 'Content', $shult->textdomain ); ?></a>
-						<a href="#" data-filter="box"><?php _e( 'Boxes', $shult->textdomain ); ?></a>
-						<a href="#" data-filter="media"><?php _e( 'Media', $shult->textdomain ); ?></a>
-						<a href="#" data-filter="gallery"><?php _e( 'Gallery', $shult->textdomain ); ?></a>
-						<a href="#" data-filter="other"><?php _e( 'Other', $shult->textdomain ); ?></a>
+						<strong><?php _e( 'Filter by type', $shult->textdomain ); ?></strong> <a href="#"
+							data-filter="all"><?php _e( 'All', $shult->textdomain ); ?></a> <a href="#"
+							data-filter="content"><?php _e( 'Content', $shult->textdomain ); ?></a> <a href="#"
+							data-filter="box"><?php _e( 'Boxes', $shult->textdomain ); ?></a> <a href="#"
+							data-filter="media"><?php _e( 'Media', $shult->textdomain ); ?></a> <a href="#"
+							data-filter="gallery"><?php _e( 'Gallery', $shult->textdomain ); ?></a> <a href="#"
+							data-filter="other"><?php _e( 'Other', $shult->textdomain ); ?></a>
 					</div>
 					<div id="su-generator-choices">
 						<?php
 							// Choices loop
 							foreach ( su_shortcodes() as $name => $shortcode ) {
-								$icon = ( $shortcode['icon'] ) ? $shortcode['icon']
+								$icon = ( isset( $shortcode['icon'] ) ) ? $shortcode['icon']
 									: $shult->assets( 'images/icons', $name ) . '.png';
-								echo '<span data-shortcode="' . $name . '" title="' . esc_attr( $shortcode['desc'] ) .
+								echo
+									'<span data-shortcode="' . $name . '" title="' . esc_attr( $shortcode['desc'] ) .
 									'" data-desc="' . esc_attr( $shortcode['desc'] ) . '" data-group="' .
 									$shortcode['group'] . '"><img src="' . $icon .
 									'" alt="" width="32" height="32" /><strong>' . $shortcode['name'] .
@@ -71,9 +88,11 @@
 					</div>
 				</div>
 				<div id="su-generator-settings"></div>
-				<input type="hidden" name="su-generator-selected" id="su-generator-selected" value="<?php echo $shult->url; ?>" />
+				<input type="hidden" name="su-generator-selected" id="su-generator-selected"
+					value="<?php echo $shult->url; ?>" />
 				<input type="hidden" name="su-generator-url" id="su-generator-url" value="<?php echo $shult->url; ?>" />
-				<input type="hidden" name="su-compatibility-mode-prefix" id="su-compatibility-mode-prefix" value="<?php echo su_compatibility_mode_prefix(); ?>" />
+				<input type="hidden" name="su-compatibility-mode-prefix" id="su-compatibility-mode-prefix"
+					value="<?php echo su_compatibility_mode_prefix(); ?>" />
 				<div id="su-generator-result" style="display:none"></div>
 			</div>
 		</div>

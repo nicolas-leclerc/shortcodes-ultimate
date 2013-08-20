@@ -1,7 +1,7 @@
 <?php
 
 	// Check that class doesn't exists
-	if ( !class_exists( 'Sunrise_Plugin_Framework_2' ) ) {
+	if ( !class_exists( 'Sunrise_Plugin_Framework_3' ) ) {
 
 		/**
 		 * Sunrise Plugin Framework Class
@@ -9,7 +9,10 @@
 		 * @author  Vladimir Anokhin <ano.vladimir@gmail.com>
 		 * @link    http://gndev.info/sunrise/
 		 */
-		class Sunrise_Plugin_Framework_2 {
+		class Sunrise_Plugin_Framework_3 {
+
+			/** @var int Framework version */
+			var $ver = 3;
 
 			/** @var string Plugin meta */
 			var $meta;
@@ -66,8 +69,7 @@
 				$this->file = $file;
 				$this->args = wp_parse_args( $args, $defaults );
 				// Check that function get_plugin_data exists
-				if ( !function_exists( 'get_plugin_data' ) )
-					require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+				if ( !function_exists( 'get_plugin_data' ) ) require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 				// Read plugin meta
 				$this->meta = get_plugin_data( $this->file, false );
 				// Init plugin data
@@ -78,11 +80,15 @@
 				$this->name = $this->meta['Name'];
 				$this->url = plugins_url( '', $this->file );
 				$this->option = $this->slug . '_options';
-				$this->includes = trailingslashit( path_join( plugin_dir_path( $this->file ), trim( $this->args['includes'], '/' ) ) );
-				$this->views = trailingslashit( path_join( plugin_dir_path( $this->file ), trim( $this->args['views'], '/' ) ) );
+				$this->includes = trailingslashit( path_join( plugin_dir_path( $this->file ),
+				                                              trim( $this->args['includes'], '/' ) ) );
+				$this->views = trailingslashit( path_join( plugin_dir_path( $this->file ),
+				                                           trim( $this->args['views'], '/' ) ) );
 				$this->assets = trim( $this->args['assets'], '/' );
 				// Make plugin available for translation
-				load_plugin_textdomain( $this->textdomain, false, trailingslashit( path_join( dirname( $this->basename ), trim( $this->meta['DomainPath'], '/' ) ) ) );
+				load_plugin_textdomain( $this->textdomain, false,
+				                        trailingslashit( path_join( dirname( $this->basename ),
+				                                                    trim( $this->meta['DomainPath'], '/' ) ) ) );
 			}
 
 			function debug() {
@@ -101,9 +107,12 @@
 			 * Register assets
 			 */
 			function register_assets() {
-				wp_register_style( 'sunrise-plugin-framework', $this->assets( 'css', 'sunrise.css' ), false, $this->version, 'all' );
-				wp_register_script( 'sunrise-plugin-framework-form', $this->assets( 'js', 'form.js' ), array( 'jquery' ), $this->version, false );
-				wp_register_script( 'sunrise-plugin-framework', $this->assets( 'js', 'sunrise.js' ), array( 'sunrise-plugin-framework-form' ), $this->version, false );
+				wp_register_style( 'sunrise-plugin-framework-' . $this->ver, $this->assets( 'css', 'sunrise.css' ),
+				                   false, $this->version, 'all' );
+				wp_register_script( 'sunrise-plugin-framework-form-' . $this->ver, $this->assets( 'js', 'form.js' ),
+				                    array( 'jquery' ), $this->version, false );
+				wp_register_script( 'sunrise-plugin-framework-' . $this->ver, $this->assets( 'js', 'sunrise.js' ),
+				                    array( 'sunrise-plugin-framework-form' ), $this->version, false );
 			}
 
 			/**
@@ -111,11 +120,12 @@
 			 */
 			function enqueue_assets() {
 				if ( !$this->is_settings() ) return;
-				foreach ( array( 'thickbox', 'farbtastic', 'sunrise-plugin-framework' ) as $style ) {
+				foreach ( array( 'thickbox', 'farbtastic', 'sunrise-plugin-framework-' . $this->ver ) as $style ) {
 					wp_enqueue_style( $style );
 				}
-				foreach ( array( 'jquery', 'media-upload', 'thickbox', 'farbtastic', 'sunrise-plugin-framework-form',
-				                 'sunrise-plugin-framework' ) as $script ) {
+				foreach ( array( 'jquery', 'media-upload', 'thickbox', 'farbtastic',
+				                 'sunrise-plugin-framework-form-' . $this->ver,
+				                 'sunrise-plugin-framework-' . $this->ver ) as $script ) {
 					wp_enqueue_script( $script );
 				}
 			}
@@ -237,7 +247,9 @@
 				$this->options = $options;
 				// Prepare defaults
 				$defaults = array( 'parent' => 'options-general.php', 'menu_title' => $this->name,
-				                   'page_title' => $this->name, 'capability' => 'manage_options', 'link' => true );
+				                   'sub_menu_title' => $this->name, 'page_title' => $this->name,
+				                   'capability' => 'manage_options', 'link' => true,
+				                   'icon' => $this->assets( 'images', 'success.png' ), 'position' => 85 );
 				// Parse args
 				$this->settings = wp_parse_args( $args, $defaults );
 				// Define admin url
@@ -252,16 +264,32 @@
 				// Add settings page
 				add_action( 'admin_menu', array( &$this, 'options_page' ) );
 				// Add settings link to plugins dashboard
-				if ( $this->settings['link'] ) add_filter( 'plugin_action_links_' . $this->basename, array( &$this,
-				                                                                                            'add_settings_link' ) );
+				if ( $this->settings['link'] ) add_filter( 'plugin_action_links_' . $this->basename,
+				                                           array( &$this, 'add_settings_link' ) );
 			}
 
 			/**
 			 * Register settings page
 			 */
 			function options_page() {
-				add_submenu_page( $this->settings['parent'], __( $this->settings['page_title'], $this->textdomain ), __( $this->settings['menu_title'], $this->textdomain ), $this->settings['capability'], $this->slug, array( &$this,
-				                                                                                                                                                                                                                'render_options_page' ) );
+				// Top-level page
+				if ( $this->settings['parent'] === 'admin.php' ) {
+					add_menu_page( __( $this->settings['page_title'], $this->textdomain ),
+					               __( $this->settings['menu_title'], $this->textdomain ),
+					               $this->settings['capability'], $this->slug, array( &$this, 'render_options_page' ),
+					               $this->settings['icon'], $this->settings['position'] );
+					add_submenu_page( $this->slug, __( $this->settings['page_title'], $this->textdomain ),
+					                  __( $this->settings['sub_menu_title'], $this->textdomain ),
+					                  $this->settings['capability'], $this->slug,
+					                  array( &$this, 'render_options_page' ) );
+				}
+				// Sub-page
+				else {
+					add_submenu_page( $this->settings['parent'], __( $this->settings['page_title'], $this->textdomain ),
+					                  __( $this->settings['menu_title'], $this->textdomain ),
+					                  $this->settings['capability'], $this->slug,
+					                  array( &$this, 'render_options_page' ) );
+				}
 			}
 
 			/**

@@ -219,6 +219,7 @@
 	padding-left: 1em;
 	padding-right: 1em;
 }
+.su-column img { max-width: 100% }
 @media only screen {
 	[class*="su-column"] + [class*="su-column"]:last-child { float: right }
 	[class*="su-column"] + [class*="su-column"].end { float: left }

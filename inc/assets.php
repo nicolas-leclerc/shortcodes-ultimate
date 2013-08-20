@@ -7,36 +7,30 @@
 		// Get plugin object
 		$shult = shortcodes_ultimate();
 		// qTip
-		wp_register_script( 'qtip', $shult->assets( 'js', 'qtip.js' ), array( 'jquery' ), $shult->version, true );
+		wp_register_script( 'qtip', $shult->assets( 'js', 'qtip.js' ), array( 'jquery' ), '1.0.0-rc3', true );
 		// Magnific Popup
-		wp_register_style( 'magnific-popup', $shult->assets( 'css', 'popup.css' ), false, $shult->version, 'all' );
-		wp_register_script( 'magnific-popup', $shult->assets( 'js', 'popup.js' ), array( 'jquery' ), $shult->version,
+		wp_register_style( 'magnific-popup', $shult->assets( 'css', 'magnific-popup.css' ), false, '0.8.6', 'all' );
+		wp_register_script( 'magnific-popup', $shult->assets( 'js', 'magnific-popup.js' ), array( 'jquery' ), '0.8.6',
 		                    true );
-		// CodeMirror
-		wp_register_style( 'codemirror', $shult->assets( 'css', 'codemirror.css' ), false, $shult->version, 'all' );
-		wp_register_style( 'codemirror-ambiance', $shult->assets( 'css', 'codemirror-ambiance.css' ), false,
-		                   $shult->version, 'all' );
-		wp_register_script( 'codemirror', $shult->assets( 'js', 'codemirror.js' ), array( 'jquery' ), $shult->version,
-		                    true );
-		wp_register_script( 'codemirror-css', $shult->assets( 'js', 'codemirror-css.js' ), array( 'codemirror' ),
-		                    $shult->version, true );
+		// Ace
+		wp_register_script( 'ace', '//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js', false, '1.1.01', true );
 		// Iframe transport
-		wp_register_script( 'iframe-transport', $shult->assets( 'js', 'iframe-transport.js' ), array( 'jquery' ),
-		                    $shult->version, true );
+		wp_register_script( 'iframe-transport', $shult->assets( 'js', 'iframe-transport.js' ), array( 'jquery' ), '1.7',
+		                    true );
 		// File upload
-		wp_register_script( 'fileupload', $shult->assets( 'js', 'fileupload.js' ),
-		                    array( 'iframe-transport', 'jquery-ui-widget' ), $shult->version, true );
+		wp_register_script( 'file-upload', $shult->assets( 'js', 'file-upload.js' ),
+		                    array( 'iframe-transport', 'jquery-ui-widget' ), '5.31.6', true );
 		// Options page
 		wp_register_style( 'su-options-page', $shult->assets( 'css', 'options-page.css' ), false, $shult->version,
 		                   'all' );
 		wp_register_script( 'su-options-page', $shult->assets( 'js', 'options-page.js' ),
-		                    array( 'magnific-popup', 'fileupload', 'jquery-ui-sortable', 'codemirror-css' ),
-		                    $shult->version, true );
+		                    array( 'magnific-popup', 'file-upload', 'jquery-ui-sortable', 'ace' ), $shult->version,
+		                    true );
 		// Generator
 		wp_register_style( 'su-generator', $shult->assets( 'css', 'generator.css' ),
 		                   array( 'farbtastic', 'magnific-popup' ), $shult->version, 'all' );
 		wp_register_script( 'su-generator', $shult->assets( 'js', 'generator.js' ),
-		                    array( 'fileupload', 'farbtastic', 'magnific-popup', 'qtip' ), $shult->version, true );
+		                    array( 'file-upload', 'farbtastic', 'magnific-popup', 'qtip' ), $shult->version, true );
 		// Shortcodes stylesheets
 		wp_register_style( 'su-content-shortcodes', su_skin_url( 'content-shortcodes.css' ), false, $shult->version,
 		                   'all' );
@@ -120,7 +114,8 @@
 	function su_print_custom_css() {
 		$shult = shortcodes_ultimate();
 		// Get custom CSS and apply filters to it
-		$custom_css = apply_filters( 'shortcodes_ultimate_custom_css', $shult->get_option( 'custom_css' ) );
+		$custom_css = apply_filters( 'shortcodes_ultimate_custom_css',
+		                             str_replace('&#039;', '\'', html_entity_decode( $shult->get_option( 'custom_css' ) ) ) );
 		// Print CSS if exists
 		if ( $custom_css ) echo "\n\n<!-- Shortcodes Ultimate custom CSS - begin -->\n<style type='text/css'>\n" .
 			stripslashes( str_replace( array( '%theme_url%', '%home_url%', '%plugin_url%' ),
@@ -152,11 +147,10 @@
 		// Check this is Shortcodes Ultimate settings page
 		if ( $_GET['page'] !== $shult->slug ) return;
 		// Request assets
-		su_query_asset( 'css', array( 'magnific-popup', 'codemirror', 'codemirror-ambiance', 'su-options-page' ) );
+		su_query_asset( 'css', array( 'magnific-popup', 'ace', 'su-options-page' ) );
 		su_query_asset( 'js',
 		                array( 'jquery', 'magnific-popup', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse',
-		                       'jquery-ui-sortable', 'iframe-transport', 'fileupload', 'codemirror', 'codemirror-css',
-		                       'su-options-page' ) );
+		                       'jquery-ui-sortable', 'iframe-transport', 'file-upload', 'css', 'su-options-page' ) );
 	}
 
 	add_action( 'sunrise_page_before', 'su_add_options_page_assets' );

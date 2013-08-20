@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gn_themes\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 19:45+0300\n"
-"PO-Revision-Date: 2013-08-13 19:46+0300\n"
+"POT-Creation-Date: 2013-08-20 03:58+0300\n"
+"PO-Revision-Date: 2013-08-20 03:58+0300\n"
 "Last-Translator: Vladimir Anokhin <ano.vladimir@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -14,10 +14,11 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: classes/sunrise.class.php:279
-#: inc/generator.php:35
-#: inc/init.php:87
-#: inc/init.php:99
+#: classes/sunrise.class.php:307
+#: inc/generator.php:54
+#: inc/init.php:35
+#: inc/init.php:92
+#: inc/init.php:104
 #: inc/shortcodes/data.php:386
 msgid "Settings"
 msgstr "Настройки"
@@ -58,52 +59,49 @@ msgstr "Текст заголовка 2"
 msgid "Styled heading 2"
 msgstr "Стильный заголовок 2"
 
-#: inc/generator.php:10
-#: inc/generator.php:12
-#: inc/generator.php:215
+#: inc/generator.php:17
+#: inc/generator.php:234
 msgid "Insert shortcode"
-msgstr "Вставка шорткода"
+msgstr "Вставить шорткод"
 
-#: inc/generator.php:36
+#: inc/generator.php:54
 msgid "Plugin settings"
 msgstr "Настройки плагина"
 
-#: inc/generator.php:39
-#: inc/generator.php:40
+#: inc/generator.php:57
 msgid "Plugin homepage"
 msgstr "Сайт плагина"
 
-#: inc/generator.php:43
-#: inc/generator.php:44
+#: inc/generator.php:60
 msgid "Support forums"
 msgstr "Форум поддержки"
 
-#: inc/generator.php:47
+#: inc/generator.php:64
 msgid "Search for shortcodes"
 msgstr "Поиск шорткода"
 
-#: inc/generator.php:50
+#: inc/generator.php:66
 msgid "Filter by type"
 msgstr "Фильтр"
 
-#: inc/generator.php:51
+#: inc/generator.php:67
 msgid "All"
 msgstr "Все"
 
-#: inc/generator.php:52
-#: inc/generator.php:209
+#: inc/generator.php:68
+#: inc/generator.php:228
 msgid "Content"
 msgstr "Содержимое"
 
-#: inc/generator.php:53
+#: inc/generator.php:69
 msgid "Boxes"
 msgstr "Блоки"
 
-#: inc/generator.php:54
+#: inc/generator.php:70
 msgid "Media"
 msgstr "Медиа"
 
-#: inc/generator.php:55
+#: inc/generator.php:71
 #: inc/shortcodes/data.php:1123
 #: inc/shortcodes/data.php:1213
 #: inc/shortcodes/data.php:1313
@@ -111,157 +109,157 @@ msgstr "Медиа"
 msgid "Gallery"
 msgstr "Галерея"
 
-#: inc/generator.php:56
+#: inc/generator.php:72
 msgid "Other"
 msgstr "Другое"
 
-#: inc/generator.php:89
-#: inc/generator.php:232
-#: inc/generator.php:250
-#: inc/generator.php:262
+#: inc/generator.php:108
+#: inc/generator.php:251
+#: inc/generator.php:269
+#: inc/generator.php:281
 msgid "Access denied"
 msgstr "Доступ запрещен"
 
-#: inc/generator.php:91
+#: inc/generator.php:110
 msgid "Shortcode not specified"
 msgstr "Не выбран шорткод"
 
-#: inc/generator.php:96
+#: inc/generator.php:115
 msgid "Click to return to the shortcodes list"
 msgstr "Нажмите, чтобы вернуться к списку шорткодов"
 
-#: inc/generator.php:97
+#: inc/generator.php:116
 msgid "All shortcodes"
 msgstr "Все шорткоды"
 
-#: inc/generator.php:130
+#: inc/generator.php:149
 msgid "Yes"
 msgstr "Да"
 
-#: inc/generator.php:131
+#: inc/generator.php:150
 msgid "No"
 msgstr "Нет"
 
-#: inc/generator.php:143
+#: inc/generator.php:162
 msgid "Max upload file size"
 msgstr "Макс. размер файла"
 
-#: inc/generator.php:144
+#: inc/generator.php:163
 msgid "Mb"
 msgstr "Мб"
 
-#: inc/generator.php:146
+#: inc/generator.php:165
 msgid "How to increase"
 msgstr "Как увеличить"
 
-#: inc/generator.php:168
+#: inc/generator.php:187
 msgid "Untitled gallery"
 msgstr "Галерея без имени"
 
-#: inc/generator.php:177
+#: inc/generator.php:196
 msgid "Galleries not found"
 msgstr "Галереи не найдены"
 
-#: inc/generator.php:179
+#: inc/generator.php:198
 msgid "Manage galleries"
 msgstr "Управление галереями"
 
-#: inc/generator.php:197
+#: inc/generator.php:216
 msgid "Click to set this value"
 msgstr "Нажмите чтобы установить это значение"
 
-#: inc/generator.php:217
+#: inc/generator.php:236
 msgid "Live preview"
 msgstr "Включить предпросмотр"
 
-#: inc/generator.php:219
+#: inc/generator.php:238
 msgid "Close window"
 msgstr "Закрыть окно"
 
-#: inc/generator.php:235
+#: inc/generator.php:254
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: inc/init.php:35
+#: inc/init.php:38
 #: inc/widget.php:40
 #: inc/widget.php:83
 msgid "Shortcodes Ultimate"
 msgstr "Шорткоды"
 
-#: inc/init.php:36
+#: inc/init.php:39
 msgid "Vladimir Anokhin"
 msgstr "Владимир Анохин"
 
-#: inc/init.php:37
+#: inc/init.php:40
 msgid "Supercharge your WordPress theme with mega pack of shortcodes"
 msgstr "Суперзарядка для вашей WordPress-темы с помощью мега набора шорткодов"
 
-#: inc/init.php:54
+#: inc/init.php:59
 #, php-format
 msgid "<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your version of WordPress (%s).<br />Reccomended WordPress version &ndash; %s (or higher).</p><a href=\"%s\">&larr; Return to the plugins screen</a> <a href=\"%s\"%s>Continue and activate anyway &rarr;</a>"
 msgstr "<h1>Упс! Плагин не активирован&hellip;</h1> <p>Плагин Shortcodes Ultimate не полностью совместим с вашей версией WordPress (%s).<br />Рекомендуемая версия WordPress &ndash; %s (или выше).</p><a href=\"%s\">&larr; Вернуться к списку плагинов</a> <a href=\"%s\"%s>Продолжить и все равно активировать &rarr;</a>"
 
-#: inc/init.php:58
+#: inc/init.php:63
 #, php-format
 msgid "<h1>Oops! Plugin not activated&hellip;</h1> <p>Shortcodes Ultimate is not fully compatible with your PHP version (%s).<br />Reccomended PHP version &ndash; %s (or higher).</p><a href=\"%s\">&larr; Return to the plugins screen</a> <a href=\"%s\"%s>Continue and activate anyway &rarr;</a>"
 msgstr "<h1>Упс! Плагин не активирован&hellip;</h1> <p>Плагин Shortcodes Ultimate не полностью совместим с вашей версией PHP (%s).<br />Рекомендуемая версия PHP &ndash; %s (или выше).</p><a href=\"%s\">&larr; Вернуться к списку плагинов</a> <a href=\"%s\"%s>Продолжить и все равно активировать &rarr;</a>"
 
-#: inc/init.php:88
+#: inc/init.php:93
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: inc/init.php:97
+#: inc/init.php:102
 msgid "About"
 msgstr "О плагине"
 
-#: inc/init.php:100
+#: inc/init.php:105
 msgid "Custom formatting"
 msgstr "Cпециальное форматирование"
 
-#: inc/init.php:101
+#: inc/init.php:106
 msgid "Disable this option if you have some problems with other plugins or content formatting"
 msgstr "Снимите этот флажок, если у вас возникли проблемы совместимости с другими плагинами или форматированием контента"
 
-#: inc/init.php:104
-#: inc/init.php:112
+#: inc/init.php:109
+#: inc/init.php:117
 msgid "Documentation article"
 msgstr "Статья из документации (англ.)"
 
-#: inc/init.php:106
-#: inc/init.php:114
+#: inc/init.php:111
+#: inc/init.php:119
 msgid "Enabled"
 msgstr "Включено"
 
-#: inc/init.php:107
+#: inc/init.php:112
 msgid "Compatibility mode"
 msgstr "Режим совместимости"
 
-#: inc/init.php:108
+#: inc/init.php:113
 msgid "Enable this option if you have some problems with other plugins that uses similar shortcode names"
 msgstr "Отметьте этот флажок, если у вас используются другие шорткоды с такими же именами. Все шорткоды этого плагина будут иметь такие имена"
 
-#: inc/init.php:110
+#: inc/init.php:115
 msgid "etc."
 msgstr "и т.д."
 
-#: inc/init.php:115
+#: inc/init.php:120
 msgid "Skin"
 msgstr "Скин"
 
-#: inc/init.php:116
+#: inc/init.php:121
 #, php-format
 msgid "Choose skin for shortcodes.<br /><a href=\"%s\" target=\"_blank\">Learn how to create custom skin</a><br /><a href=\"%s\" target=\"_blank\"><b>Download more skins</b></a>"
 msgstr "Выберите скин для шорткодов.<br /><a href=\"%s\" target=\"_blank\">Инструкция по созданию собственных скинов (англ.)</a><br /><a href=\"%s\" target=\"_blank\"><b>Скачать скины</b></a>"
 
-#: inc/init.php:121
+#: inc/init.php:126
 msgid "Custom CSS"
 msgstr "Произвольный CSS"
 
-#: inc/init.php:123
+#: inc/init.php:128
 msgid "Galleries"
 msgstr "Галереи"
 
-#: inc/init.php:125
+#: inc/init.php:130
 msgid "Cheatsheet"
 msgstr "Шпаргалка"
 
@@ -2117,8 +2115,8 @@ msgid "Saved"
 msgstr "Сохранено"
 
 #: inc/views/closetab.php:7
-msgid "Reset all settings to default. Are you sure? This action cannot be undone!"
-msgstr "Сброс всех настроек плагина. Вы уверены? Это действие нельзя будет отменить!"
+msgid "This action will remove all your custom CSS, galleries and settings. Are you sure? This action cannot be undone!"
+msgstr "Данное действие удалит произвольный CSS, все ваши галереи и настройки. Вы уверены? Это действие нельзя будет отменить!"
 
 #: inc/views/closetab.php:7
 msgid "Restore default settings"
@@ -2147,10 +2145,6 @@ msgstr "url папки с текущей темой"
 #: inc/views/css.php:20
 msgid "plugin url"
 msgstr "url папки этого плагина"
-
-#: inc/views/css.php:23
-msgid "Toggle fullscreen"
-msgstr "Полный экран"
 
 #: inc/views/galleries.php:2
 msgid "Are you sure that you want to delete this gallery? This action can't be undone!"

@@ -1,9 +1,13 @@
 .su-generator-hidden { display: none !important }
-.wp-media-buttons .button.su-generator-button { padding-left: 0.4em }
+.su-generator-button img {
+	vertical-align: middle;
+	margin: 0 2px 0 -5px;
+}
 
 #su-generator-wrap { display: none }
 #su-generator {
-	max-width: 600px;
+	width: 90%;
+	max-width: 1000px;
 	margin: 28px auto 100px auto;
 	padding: 20px;
 	background: #fff;
@@ -16,7 +20,11 @@
 	box-shadow: 0 2px 25px #000;
 	-moz-box-shadow: 0 2px 25px #000;
 	-webkit-box-shadow: 0 2px 25px #000;
+	transition: max-width .2s;
+	-moz-transition: max-width .2s;
+	-webkit-transition: max-width .2s;
 }
+#su-generator.su-generator-narrow { max-width: 500px }
 
 /* Generator tools */
 #su-generator-tools {
@@ -36,8 +44,9 @@
 #su-generator-search {
 	width: 100%;
 	margin-bottom: 30px;
-	padding: 10px;
-	font-size: 1.2em;
+	padding: 10px 10px 10px 42px;
+	font-size: 1.3em;
+	background: 5px 50% url('../images/generator/search.png') no-repeat;
 }
 
 /* Filter box */
@@ -58,15 +67,17 @@
 }
 
 /* Dropdown choices */
-#su-generator-choices { margin-top: 20px }
+#su-generator-choices {
+	margin-top: 20px;
+	text-align: center;
+}
 #su-generator-choices:after {
 	content: '';
 	display: block;
 	clear: both;
 }
 #su-generator-choices > span {
-	float: left;
-	display: block;
+	display: inline-block;
 	width: 88px;
 	height: 88px;
 	padding: 5px;
@@ -75,6 +86,7 @@
 	border-bottom-color: #e5e5e5;
 	border-bottom-style: dotted;
 	text-align: center;
+	vertical-align: top;
 	color: #222;
 	cursor: pointer;
 	border-radius: 0;
@@ -83,7 +95,7 @@
 }
 #su-generator-choices span:hover {
 	background: #f5f5f5;
-	border: 1px solid #2687B3;
+	border: 1px solid #2687b3;
 	box-shadow: 0 0 20px #fff inset;
 	-moz-box-shadow: 0 0 20px #fff inset;
 	-webkit-box-shadow: 0 0 20px #fff inset;
@@ -110,9 +122,12 @@
 	opacity: 1;
 }
 #su-generator-choices strong {
-	display: block;
+	display: inline-block;
 	text-transform: uppercase;
 	font-size: 0.9em;
+	width: 88px;
+	height: 32px;
+	overflow: hidden;
 }
 
 /* Breadcrumbs */
@@ -245,7 +260,7 @@
 }
 .su-generator-switch-yes span.su-generator-yes {
 	display: block;
-	background: #E0FFE0;
+	background: #e0ffe0;
 	color: #0c0;
 }
 .su-generator-switch-no span.su-generator-no {
@@ -297,6 +312,11 @@
 	-moz-border-radius-bottomleft: 5px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+}
+.su-generator-actions:after {
+	content: '';
+	display: block;
+	clear: both;
 }
 #su-generator-insert {
 	color: #fff !important;

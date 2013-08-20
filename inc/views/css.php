@@ -20,7 +20,7 @@
 		<code>%plugin_url%</code> - <?php _e( 'plugin url', $this->textdomain ); ?>
 	</div>
 	<div id="su-custom-css-editor">
-		<span id="su-fullscreen" title="<?php _e( 'Toggle fullscreen', $this->textdomain ); ?>"></span>
+		<div id="sunrise-plugin-field-<?php echo $option['id']; ?>-editor"></div>
 		<textarea name="<?php echo $option['id']; ?>" id="sunrise-plugin-field-<?php echo $option['id']; ?>" class="regular-text"><?php echo stripslashes( $settings[$option['id']] ); ?></textarea>
 	</div>
 </div>

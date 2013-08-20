@@ -1492,6 +1492,8 @@
 				'desc' => __( 'Custom posts query with customizable template', $shult->textdomain )
 			)
 			) );
+		// Sort array
+		ksort( $shortcodes );
 		// Return result
 		return ( $shortcode ) ? $shortcodes[$shortcode] :
 			$shortcodes;
@@ -1504,7 +1506,7 @@
 		// Loop through shortcodes
 		foreach ( ( array ) su_shortcodes() as $shortcode => $data ) {
 			// Prepare shortcode function name
-			$function = ( $data['function'] ) ? $data['function'] : 'su_' . $shortcode . '_shortcode';
+			$function = ( isset( $data['function'] ) ) ? $data['function'] : 'su_' . $shortcode . '_shortcode';
 			// Register shortcode
 			add_shortcode( su_compatibility_mode_prefix() . $shortcode, $function );
 		}

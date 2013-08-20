@@ -1,30 +1,33 @@
 jQuery( document ).ready( function ( $ ) {
 
 	// Prepare data
-	var $search = $( '#su-generator-search' ), $filter = $( '#su-generator-filter' ), $filters = $filter.children( 'a' ), $choices = $( '#su-generator-choices' ), $choice = $choices.find( 'span' ), $settings = $( '#su-generator-settings' ), $button = $( '.su-generator-button' ), $cancel = $( '#su-generator-cancel' ), $insert = $( '#su-generator-insert' ), $prefix = $( '#su-compatibility-mode-prefix' ), $another = $( '#su-generator-select-another' ), $result = $( '#su-generator-result' ), $selected = $( '#su-generator-selected' ), $preview_link = $( '#su-generator-preview-link' ), mce_selection = '';
+	var $generator = $( '#su-generator' ), $search = $( '#su-generator-search' ), $filter = $( '#su-generator-filter' ), $filters = $filter.children( 'a' ), $choices = $( '#su-generator-choices' ), $choice = $choices.find( 'span' ), $settings = $( '#su-generator-settings' ), $button = $( '.su-generator-button' ), $cancel = $( '#su-generator-cancel' ), $insert = $( '#su-generator-insert' ), $prefix = $( '#su-compatibility-mode-prefix' ), $another = $( '#su-generator-select-another' ), $result = $( '#su-generator-result' ), $selected = $( '#su-generator-selected' ), $preview_link = $( '#su-generator-preview-link' ), mce_selection = '';
 
 	// Apply qTip to choices
-	$choice.qtip( {
-		style: {
-			name: 'dark',
-			tip: 'bottomMiddle',
-			background: '#303030',
-			border: {
-				width: 3,
-				radius: 5
+	$choice.each( function () {
+		var $c = $( this );
+		if ( $c.attr( 'title' ) != '' ) $c.qtip( {
+			style: {
+				name: 'dark',
+				tip: 'bottomMiddle',
+				background: '#303030',
+				border: {
+					width: 3,
+					radius: 5
+				}
+			},
+			show: {
+				effect: {
+					length: 0
+				}
+			},
+			position: {
+				corner: {
+					tooltip: 'bottomMiddle',
+					target: 'topMiddle'
+				}
 			}
-		},
-		show: {
-			effect: {
-				length: 0
-			}
-		},
-		position: {
-			corner: {
-				tooltip: 'bottomMiddle',
-				target: 'topMiddle'
-			}
-		}
+		} );
 	} );
 
 	// Generator button
@@ -52,6 +55,8 @@ jQuery( document ).ready( function ( $ ) {
 					$search.val( '' );
 					// Hide settings
 					$settings.html( '' ).hide();
+					// Remove narrow class
+					$generator.removeClass( 'su-generator-narrow' );
 					// Show filters
 					$filter.show();
 					// Show choices panel
@@ -92,6 +97,8 @@ jQuery( document ).ready( function ( $ ) {
 		$search.val( '' );
 		// Hide settings
 		$settings.html( '' ).hide();
+		// Remove narrow class
+		$generator.removeClass( 'su-generator-narrow' );
 		// Show filters
 		$filter.show();
 		// Show choices panel
@@ -117,24 +124,17 @@ jQuery( document ).ready( function ( $ ) {
 		focus: function () {
 			// Clear field
 			$( this ).val( '' );
+			// Hide settings
+			$settings.html( '' ).hide();
+			// Remove narrow class
+			$generator.removeClass( 'su-generator-narrow' );
 			// Show choices panel
 			$choices.show();
 			$choice.show();
-			// Hide settings
-			$settings.hide();
 			// Show filters
-			//$filter.show();
+			$filter.show();
 		},
 		blur: function () {
-			// Settings is loaded
-			if ( $settings.html() !== '' ) {
-				// Hide choices panel
-				$choices.hide();
-				// Show settings
-				$settings.show();
-				// Hide filters
-				$filter.hide();
-			}
 		},
 		keyup: function ( e ) {
 			var val = $( this ).val(), regex = new RegExp( val, 'gi' );
@@ -173,6 +173,8 @@ jQuery( document ).ready( function ( $ ) {
 				$choices.hide();
 				// Show loading animation
 				$settings.addClass( 'su-loading-animation' ).show();
+				// Add narrow class
+				$generator.addClass( 'su-generator-narrow' );
 				// Hide filters
 				$filter.hide();
 			},

@@ -60,7 +60,8 @@
 		$atts = shortcode_atts( array( 'title' => 'Tab %d', 'class' => '' ), $atts );
 		$x = $GLOBALS['tab_count'];
 		$GLOBALS['tabs'][$x] = array( 'title' => sprintf( $atts['title'], $GLOBALS['tab_count'] ),
-		                              'content' => do_shortcode( $content ), 'class' => $atts['class'] );
+		                              'content' => do_shortcode( $content ),
+		                              'class' => $atts['class'] );
 		$GLOBALS['tab_count']++;
 	}
 
@@ -74,15 +75,17 @@
 	 */
 	function su_spoiler_shortcode( $atts, $content = null ) {
 		$shult = shortcodes_ultimate();
-		$atts = shortcode_atts( array( 'title' => __( 'Spoiler title', $shult->textdomain ), 'open' => 'no',
+		$atts = shortcode_atts( array( 'title' => __( 'Spoiler title', $shult->textdomain ),
+		                               'open' => 'no',
 		                               'class' => '' ), $atts );
 		$open = ( $atts['open'] === 'no' ) ? ' su-spoiler-closed' : '';
 		su_query_asset( 'css', 'su-box-shortcodes' );
 		su_query_asset( 'js', 'jquery' );
 		su_query_asset( 'js', 'su-other-shortcodes' );
-		return '<div class="su-spoiler' . $open . su_ecssc( $atts ) .
-		'"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>' . $atts['title'] .
-		'</div><div class="su-spoiler-content">' . su_do_shortcode( $content, 's' ) . '</div></div>';
+		return
+			'<div class="su-spoiler' . $open . su_ecssc( $atts ) .
+			'"><div class="su-spoiler-title"><span class="su-spoiler-icon"></span>' . $atts['title'] .
+			'</div><div class="su-spoiler-content">' . su_do_shortcode( $content, 's' ) . '</div></div>';
 	}
 
 	/**
@@ -263,10 +266,18 @@
 	 * @return string Output html
 	 */
 	function su_button_shortcode( $atts, $content = null ) {
-		$atts = shortcode_atts( array( 'url' => get_option( 'home' ), 'target' => 'self', 'style' => 'default',
-		                               'background' => '#2D89EF', 'color' => '#FFFFFF', 'size' => 3, 'wide' => 'no',
-		                               'radius' => 'auto', 'icon' => false, 'ts_color' => 'dark',
-		                               'ts_pos' => 'top-left', 'class' => '' ), $atts );
+		$atts = shortcode_atts( array( 'url' => get_option( 'home' ),
+		                               'target' => 'self',
+		                               'style' => 'default',
+		                               'background' => '#2D89EF',
+		                               'color' => '#FFFFFF',
+		                               'size' => 3,
+		                               'wide' => 'no',
+		                               'radius' => 'auto',
+		                               'icon' => false,
+		                               'ts_color' => 'dark',
+		                               'ts_pos' => 'top-left',
+		                               'class' => '' ), $atts );
 
 		// Prepare vars
 		$a_css = array();
@@ -275,9 +286,15 @@
 		$radius = '0px';
 
 		// Text shadow values
-		$shadows = array( 'none' => '0 0', 'top' => '0 -1px', 'right' => '1px 0', 'bottom' => '0 1px',
-		                  'left' => '-1px 0', 'top-right' => '1px -1px', 'top-left' => '-1px -1px',
-		                  'bottom-right' => '1px 1px', 'bottom-left' => '-1px 1px' );
+		$shadows = array( 'none' => '0 0',
+		                  'top' => '0 -1px',
+		                  'right' => '1px 0',
+		                  'bottom' => '0 1px',
+		                  'left' => '-1px 0',
+		                  'top-right' => '1px -1px',
+		                  'top-left' => '-1px -1px',
+		                  'bottom-right' => '1px 1px',
+		                  'bottom-left' => '-1px 1px' );
 
 		// Common styles for button
 		$styles = array( 'size' => round( ( $atts['size'] + 7 ) * 1.3 ),
@@ -293,19 +310,24 @@
 		elseif ( is_numeric( $atts['radius'] ) ) $radius = intval( $atts['radius'] ) . 'px';
 
 		// CSS rules for <a> tag
-		$a_rules = array( 'color' => $atts['color'], 'background-color' => $atts['background'],
+		$a_rules = array( 'color' => $atts['color'],
+		                  'background-color' => $atts['background'],
 		                  'border-color' => su_hex_shift( $atts['background'], 'darker', 20 ),
-		                  'border-radius' => $radius, '-moz-border-radius' => $radius,
+		                  'border-radius' => $radius,
+		                  '-moz-border-radius' => $radius,
 		                  '-webkit-border-radius' => $radius );
 
 		// CSS rules for <span> tag
-		$span_rules = array( 'color' => $atts['color'], 'padding' => ( $atts['icon'] ) ?
-			round( ( $atts['size'] ) / 2 + 4 ) . 'px ' . round( $atts['size'] * 2 + 10 ) . 'px'
-			: '0px ' . round( $atts['size'] * 2 + 10 ) . 'px', 'font-size' => $styles['size'] . 'px',
-		                     'line-height' => ( $atts['icon'] )
-			                     ? round( $styles['size'] * 1.5 ) . 'px' : round( $styles['size'] * 2 ) . 'px',
+		$span_rules = array( 'color' => $atts['color'],
+		                     'padding' => ( $atts['icon'] ) ?
+			                     round( ( $atts['size'] ) / 2 + 4 ) . 'px ' . round( $atts['size'] * 2 + 10 ) . 'px'
+			                     : '0px ' . round( $atts['size'] * 2 + 10 ) . 'px',
+		                     'font-size' => $styles['size'] . 'px',
+		                     'line-height' => ( $atts['icon'] ) ? round( $styles['size'] * 1.5 ) . 'px'
+			                     : round( $styles['size'] * 2 ) . 'px',
 		                     'border-color' => su_hex_shift( $atts['background'], 'lighter', 30 ),
-		                     'border-radius' => $radius, '-moz-border-radius' => $radius,
+		                     'border-radius' => $radius,
+		                     '-moz-border-radius' => $radius,
 		                     '-webkit-border-radius' => $radius,
 		                     'text-shadow' => $styles['ts_pos'] . ' 1px ' . $styles['ts_color'],
 		                     '-moz-text-shadow' => $styles['ts_pos'] . ' 1px ' . $styles['ts_color'],
@@ -364,7 +386,8 @@
 	function su_service_shortcode( $atts, $content = null ) {
 		$shult = shortcodes_ultimate();
 		$atts = shortcode_atts( array( 'title' => __( 'Service title', $shult->textdomain ),
-		                               'icon' => $shult->assets( 'images', 'service.png' ), 'size' => 32,
+		                               'icon' => $shult->assets( 'images', 'service.png' ),
+		                               'size' => 32,
 		                               'class' => '' ), $atts );
 		su_query_asset( 'css', 'su-box-shortcodes' );
 		return '<div class="su-service' . su_ecssc( $atts ) . '"><div class="su-service-title" style="padding:' .
@@ -385,8 +408,11 @@
 	 */
 	function su_box_shortcode( $atts, $content = null ) {
 		$shult = shortcodes_ultimate();
-		$atts = shortcode_atts( array( 'title' => __( 'This is box title', $shult->textdomain ), 'style' => 'default',
-		                               'box_color' => '#333333', 'title_color' => '#FFFFFF', 'radius' => '3',
+		$atts = shortcode_atts( array( 'title' => __( 'This is box title', $shult->textdomain ),
+		                               'style' => 'default',
+		                               'box_color' => '#333333',
+		                               'title_color' => '#FFFFFF',
+		                               'radius' => '3',
 		                               'class' => '' ), $atts );
 		// Prepare border-radius
 		$radius = ( $atts['radius'] != '0' ) ?
@@ -399,11 +425,12 @@
 			'px;border-top-left-radius:' . $title_radius . 'px;border-top-right-radius:' . $title_radius . 'px;' : '';
 		su_query_asset( 'css', 'su-box-shortcodes' );
 		// Return result
-		return '<div class="su-box su-box-style-' . $atts['style'] . su_ecssc( $atts ) . '" style="border-color:' .
-		su_hex_shift( $atts['box_color'], 'darker', 20 ) . ';' . $radius .
-		'"><div class="su-box-title" style="background-color:' . $atts['box_color'] . ';color:' . $atts['title_color'] .
-		';' . $title_radius . '">' . $atts['title'] . '</div><div class="su-box-content">' .
-		su_do_shortcode( $content, 'b' ) . '</div></div>';
+		return
+			'<div class="su-box su-box-style-' . $atts['style'] . su_ecssc( $atts ) . '" style="border-color:' .
+			su_hex_shift( $atts['box_color'], 'darker', 20 ) . ';' . $radius .
+			'"><div class="su-box-title" style="background-color:' . $atts['box_color'] . ';color:' .
+			$atts['title_color'] . ';' . $title_radius . '">' . $atts['title'] . '</div><div class="su-box-content">' .
+			su_do_shortcode( $content, 'b' ) . '</div></div>';
 	}
 
 	/**
@@ -415,18 +442,21 @@
 	 * @return string Output html
 	 */
 	function su_note_shortcode( $atts, $content = null ) {
-		$atts = shortcode_atts( array( 'background' => '#FFFF66', 'color' => '#333333', 'radius' => '3',
+		$atts = shortcode_atts( array( 'background' => '#FFFF66',
+		                               'color' => '#333333',
+		                               'radius' => '3',
 		                               'class' => '' ), $atts );
 		// Prepare border-radius
 		$radius = ( $atts['radius'] != '0' ) ?
 			'border-radius:' . $atts['radius'] . 'px;-moz-border-radius:' . $atts['radius'] .
 			'px;-webkit-border-radius:' . $atts['radius'] . 'px;' : '';
 		su_query_asset( 'css', 'su-box-shortcodes' );
-		return '<div class="su-note' . su_ecssc( $atts ) . '" style="border-color:' .
-		su_hex_shift( $atts['background'], 'darker', 10 ) . ';' . $radius .
-		'"><div class="su-note-inner" style="background-color:' . $atts['background'] . ';border-color:' .
-		su_hex_shift( $atts['background'], 'lighter', 80 ) . ';color:' . $atts['color'] . ';' . $radius . '">' .
-		su_do_shortcode( $content, 'n' ) . '</div></div>';
+		return
+			'<div class="su-note' . su_ecssc( $atts ) . '" style="border-color:' .
+			su_hex_shift( $atts['background'], 'darker', 10 ) . ';' . $radius .
+			'"><div class="su-note-inner" style="background-color:' . $atts['background'] . ';border-color:' .
+			su_hex_shift( $atts['background'], 'lighter', 80 ) . ';color:' . $atts['color'] . ';' . $radius . '">' .
+			su_do_shortcode( $content, 'n' ) . '</div></div>';
 	}
 
 	/**
@@ -457,9 +487,12 @@
 		// Prepare data
 		$shult = shortcodes_ultimate();
 		$return = array();
-		$atts = shortcode_atts( array( 'url' => 'http://www.youtube.com/watch?v=NbE8INOjTKM', 'width' => 600,
-		                               'height' => 400, 'autoplay' => 'no', 'responsive' => 'yes', 'class' => '' ),
-		                        $atts );
+		$atts = shortcode_atts( array( 'url' => 'http://www.youtube.com/watch?v=NbE8INOjTKM',
+		                               'width' => 600,
+		                               'height' => 400,
+		                               'autoplay' => 'no',
+		                               'responsive' => 'yes',
+		                               'class' => '' ), $atts );
 		$id = su_video_id( $atts['url'] );
 		// Check that url is specified
 		if ( !$id ) return
@@ -489,8 +522,12 @@
 		// Prepare data
 		$shult = shortcodes_ultimate();
 		$return = array();
-		$atts = shortcode_atts( array( 'url' => 'http://vimeo.com/21294655', 'width' => 600, 'height' => 400,
-		                               'autoplay' => 'no', 'responsive' => 'yes', 'class' => '' ), $atts );
+		$atts = shortcode_atts( array( 'url' => 'http://vimeo.com/21294655',
+		                               'width' => 600,
+		                               'height' => 400,
+		                               'autoplay' => 'no',
+		                               'responsive' => 'yes',
+		                               'class' => '' ), $atts );
 		$id = su_video_id( $atts['url'] );
 		// Check that url is specified
 		if ( !$id ) return
@@ -520,7 +557,10 @@
 		// Prepare data
 		$shult = shortcodes_ultimate();
 		$atts = shortcode_atts( array( 'url' => 'http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3',
-		                               'width' => 'auto', 'title' => '', 'autoplay' => 'no', 'loop' => 'no',
+		                               'width' => 'auto',
+		                               'title' => '',
+		                               'autoplay' => 'no',
+		                               'loop' => 'no',
 		                               'class' => '' ), $atts );
 		// Generate unique ID
 		$id = uniqid( 'su_audio_player_' );
@@ -535,12 +575,13 @@
 		su_query_asset( 'js', 'su-players-shortcodes' );
 		su_query_asset( 'js', 'su-players-shortcodes' );
 		// Create player
-		return '<div class="su-audio' . su_ecssc( $atts ) . '" data-id="' . $id . '" data-audio="' . $atts['url'] .
-		'" data-swf="' . $shult->assets( 'other', 'Jplayer.swf' ) . '" data-autoplay="' . $atts['autoplay'] .
-		'" data-loop="' . $atts['loop'] . '" style="' . $width . '"><div id="' . $id .
-		'" class="jp-jplayer"></div><div id="' . $id .
-		'_container" class="jp-audio"><div class="jp-type-single"><div class="jp-gui jp-interface"><div class="jp-controls"><span class="jp-play"></span><span class="jp-pause"></span><span class="jp-stop"></span><span class="jp-mute"></span><span class="jp-unmute"></span><span class="jp-volume-max"></span></div><div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div><div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div><div class="jp-current-time"></div><div class="jp-duration"></div></div><div class="jp-title">' .
-		$atts['title'] . '</div></div></div></div>';
+		return
+			'<div class="su-audio' . su_ecssc( $atts ) . '" data-id="' . $id . '" data-audio="' . $atts['url'] .
+			'" data-swf="' . $shult->assets( 'other', 'Jplayer.swf' ) . '" data-autoplay="' . $atts['autoplay'] .
+			'" data-loop="' . $atts['loop'] . '" style="' . $width . '"><div id="' . $id .
+			'" class="jp-jplayer"></div><div id="' . $id .
+			'_container" class="jp-audio"><div class="jp-type-single"><div class="jp-gui jp-interface"><div class="jp-controls"><span class="jp-play"></span><span class="jp-pause"></span><span class="jp-stop"></span><span class="jp-mute"></span><span class="jp-unmute"></span><span class="jp-volume-max"></span></div><div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div><div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div><div class="jp-current-time"></div><div class="jp-duration"></div></div><div class="jp-title">' .
+			$atts['title'] . '</div></div></div></div>';
 	}
 
 	/**
@@ -556,8 +597,13 @@
 		$shult = shortcodes_ultimate();
 		$atts = shortcode_atts( array( 'url' => 'http://www.jplayer.org/video/m4v/Big_Buck_Bunny_Trailer.m4v',
 		                               'poster' => 'http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png',
-		                               'title' => '', 'width' => 600, 'height' => 300, 'controls' => 'yes',
-		                               'autoplay' => 'no', 'loop' => 'no', 'class' => '' ), $atts );
+		                               'title' => '',
+		                               'width' => 600,
+		                               'height' => 300,
+		                               'controls' => 'yes',
+		                               'autoplay' => 'no',
+		                               'loop' => 'no',
+		                               'class' => '' ), $atts );
 		// Generate unique ID
 		$id = uniqid( 'su_video_player_' );
 		// Check that url is specified
@@ -570,13 +616,14 @@
 		su_query_asset( 'js', 'jplayer' );
 		su_query_asset( 'js', 'su-players-shortcodes' );
 		// Create player
-		return '<div style="width:' . $atts['width'] . 'px"><div id="' . $id .
-		'" class="su-video jp-video su-video-controls-' . $atts['controls'] . su_ecssc( $atts ) . '" data-id="' . $id .
-		'" data-video="' . $atts['url'] . '" data-swf="' . $shult->assets( 'other', 'Jplayer.swf' ) .
-		'" data-autoplay="' . $atts['autoplay'] . '" data-loop="' . $atts['loop'] . '" data-poster="' .
-		$atts['poster'] . '"><div id="' . $id . '_player" class="jp-jplayer" style="width:' . $atts['width'] .
-		'px;height:' . $atts['height'] . 'px"></div>' . $title .
-		'<div class="jp-start jp-play"></div><div class="jp-gui"><div class="jp-interface"><div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div><div class="jp-current-time"></div><div class="jp-duration"></div><div class="jp-controls-holder"><span class="jp-play"></span><span class="jp-pause"></span><span class="jp-mute"></span><span class="jp-unmute"></span><span class="jp-full-screen"></span><span class="jp-restore-screen"></span><div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div></div></div></div></div></div>';
+		return
+			'<div style="width:' . $atts['width'] . 'px"><div id="' . $id .
+			'" class="su-video jp-video su-video-controls-' . $atts['controls'] . su_ecssc( $atts ) . '" data-id="' .
+			$id . '" data-video="' . $atts['url'] . '" data-swf="' . $shult->assets( 'other', 'Jplayer.swf' ) .
+			'" data-autoplay="' . $atts['autoplay'] . '" data-loop="' . $atts['loop'] . '" data-poster="' .
+			$atts['poster'] . '"><div id="' . $id . '_player" class="jp-jplayer" style="width:' . $atts['width'] .
+			'px;height:' . $atts['height'] . 'px"></div>' . $title .
+			'<div class="jp-start jp-play"></div><div class="jp-gui"><div class="jp-interface"><div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div><div class="jp-current-time"></div><div class="jp-duration"></div><div class="jp-controls-holder"><span class="jp-play"></span><span class="jp-pause"></span><span class="jp-mute"></span><span class="jp-unmute"></span><span class="jp-full-screen"></span><span class="jp-restore-screen"></span><div class="jp-volume-bar"><div class="jp-volume-bar-value"></div></div></div></div></div></div></div>';
 	}
 
 	/**
@@ -610,8 +657,9 @@
 		$atts = shortcode_atts( array( 'id' => 1, 'target' => 'self', 'class' => '' ), $atts );
 		// Prepare link text
 		$text = ( $content ) ? $content : get_the_title( $atts['id'] );
-		return '<a href="' . get_permalink( $atts['id'] ) . '" class="' . su_ecssc( $atts ) . '" title="' . $text .
-		'" target="_' . $atts['target'] . '">' . $text . '</a>';
+		return
+			'<a href="' . get_permalink( $atts['id'] ) . '" class="' . su_ecssc( $atts ) . '" title="' . $text .
+			'" target="_' . $atts['target'] . '">' . $text . '</a>';
 	}
 
 	/**
@@ -626,7 +674,8 @@
 		$shult = shortcodes_ultimate();
 		$atts = shortcode_atts( array( 'message' => __( 'This content is for registered users only. Please %login%.',
 		                                                $shult->textdomain ),
-		                               'login' => __( 'login', $shult->textdomain ), 'class' => '' ), $atts );
+		                               'login' => __( 'login', $shult->textdomain ),
+		                               'class' => '' ), $atts );
 		// Prepare links
 		$login = '<a href="' . wp_login_url( get_permalink( get_the_ID() ) ) . '">' . $atts['login'] . '</a>';
 		su_query_asset( 'css', 'su-other-shortcodes' );
@@ -680,7 +729,9 @@
 		$atts = shortcode_atts( array( 'depth' => 1, 'p' => false, 'class' => '' ), $atts );
 		global $post;
 		$child_of = ( $atts['p'] ) ? $atts['p'] : get_the_ID();
-		$return = wp_list_pages( array( 'title_li' => '', 'echo' => 0, 'child_of' => $child_of,
+		$return = wp_list_pages( array( 'title_li' => '',
+		                                'echo' => 0,
+		                                'child_of' => $child_of,
 		                                'depth' => $atts['depth'] ) );
 		return ( $return ) ? '<ul class="su-subpages' . su_ecssc( $atts ) . '">' . $return . '</ul>' : false;
 	}
@@ -696,8 +747,11 @@
 	function su_siblings_shortcode( $atts, $content = null ) {
 		$atts = shortcode_atts( array( 'depth' => 1, 'class' => '' ), $atts );
 		global $post;
-		$return = wp_list_pages( array( 'title_li' => '', 'echo' => 0, 'child_of' => $post->post_parent,
-		                                'depth' => $atts['depth'], 'exclude' => $post->ID ) );
+		$return = wp_list_pages( array( 'title_li' => '',
+		                                'echo' => 0,
+		                                'child_of' => $post->post_parent,
+		                                'depth' => $atts['depth'],
+		                                'exclude' => $post->ID ) );
 		return ( $return ) ? '<ul class="su-siblings' . su_ecssc( $atts ) . '">' . $return . '</ul>' : false;
 	}
 
@@ -711,8 +765,11 @@
 	 */
 	function su_menu_shortcode( $atts, $content = null ) {
 		$atts = shortcode_atts( array( 'name' => false, 'class' => '' ), $atts );
-		$return = wp_nav_menu( array( 'echo' => false, 'menu' => $atts['name'], 'container' => false,
-		                              'fallback_cb' => 'su_menu_shortcode_fb_cb', 'class' => $atts['class'] ) );
+		$return = wp_nav_menu( array( 'echo' => false,
+		                              'menu' => $atts['name'],
+		                              'container' => false,
+		                              'fallback_cb' => 'su_menu_shortcode_fb_cb',
+		                              'class' => $atts['class'] ) );
 		return ( $atts['name'] ) ? $return : false;
 	}
 
@@ -735,13 +792,17 @@
 	 * @return string Output html
 	 */
 	function su_document_shortcode( $atts, $content = null ) {
-		$atts = shortcode_atts( array( 'url' => '', 'width' => 600, 'height' => 400, 'responsive' => 'yes',
+		$atts = shortcode_atts( array( 'url' => '',
+		                               'width' => 600,
+		                               'height' => 400,
+		                               'responsive' => 'yes',
 		                               'class' => '' ), $atts );
 		su_query_asset( 'css', 'su-media-shortcodes' );
-		return '<div class="su-document su-responsive-media-' . $atts['responsive'] .
-		'"><iframe src="http://docs.google.com/viewer?embedded=true&url=' . $atts['url'] . '" width="' .
-		$atts['width'] . '" height="' . $atts['height'] . '" class="su-document' . su_ecssc( $atts ) .
-		'"></iframe></div>';
+		return
+			'<div class="su-document su-responsive-media-' . $atts['responsive'] .
+			'"><iframe src="http://docs.google.com/viewer?embedded=true&url=' . $atts['url'] . '" width="' .
+			$atts['width'] . '" height="' . $atts['height'] . '" class="su-document' . su_ecssc( $atts ) .
+			'"></iframe></div>';
 	}
 
 	/**
@@ -753,7 +814,10 @@
 	 * @return string Output html
 	 */
 	function su_gmap_shortcode( $atts, $content = null ) {
-		$atts = shortcode_atts( array( 'width' => 600, 'height' => 400, 'responsive' => 'yes', 'address' => 'New York',
+		$atts = shortcode_atts( array( 'width' => 600,
+		                               'height' => 400,
+		                               'responsive' => 'yes',
+		                               'address' => 'New York',
 		                               'class' => '' ), $atts );
 		su_query_asset( 'css', 'su-media-shortcodes' );
 		return
@@ -774,9 +838,18 @@
 		// Prepare vars
 		$shult = shortcodes_ultimate();
 		$return = '';
-		$atts = shortcode_atts( array( 'gallery' => false, 'width' => 600, 'height' => 300, 'responsive' => 'yes',
-		                               'title' => 'yes', 'centered' => 'yes', 'arrows' => 'yes', 'pages' => 'yes',
-		                               'mousewheel' => 'yes', 'autoplay' => 3000, 'speed' => 600, 'target' => 'yes',
+		$atts = shortcode_atts( array( 'gallery' => false,
+		                               'width' => 600,
+		                               'height' => 300,
+		                               'responsive' => 'yes',
+		                               'title' => 'yes',
+		                               'centered' => 'yes',
+		                               'arrows' => 'yes',
+		                               'pages' => 'yes',
+		                               'mousewheel' => 'yes',
+		                               'autoplay' => 3000,
+		                               'speed' => 600,
+		                               'target' => 'yes',
 		                               'class' => '' ), $atts );
 		// Prepare unique ID
 		$id = uniqid( 'su_slider_' );
@@ -795,17 +868,18 @@
 		$size = ( $atts['responsive'] === 'yes' ) ? 'width:100%'
 			: 'width:' . intVal( $atts['width'] ) . 'px;height:' . intVal( $atts['height'] ) . 'px';
 		// Slides not found
-		if ( !count( $slides ) ) $return =
+		if ( !count( $slides ) || !is_array( $slides ) ) $return =
 			'<p class="su-error">Slider: ' . __( 'images not found', $shult->textdomain ) . '</p>';
 		// Slides are found
 		else {
 			// Open slider
-			$return .= '<div id="' . $id . '" class="su-slider' . $centered . ' su-slider-pages-' . $atts['pages'] .
+			$return .=
+				'<div id="' . $id . '" class="su-slider' . $centered . ' su-slider-pages-' . $atts['pages'] .
 				' su-slider-responsive-' . $atts['responsive'] . su_ecssc( $atts ) . '" style="' . $size .
 				'" data-autoplay="' . $atts['autoplay'] . '" data-speed="' . $atts['speed'] . '" data-mousewheel="' .
 				$mousewheel . '"><div class="su-slider-slides">';
 			// Create slides
-			foreach ( $slides as $slide ) {
+			foreach ( (array) $slides as $slide ) {
 				// Crop the image
 				$image = su_image_resize( $slide['image'], $atts['width'], $atts['height'] );
 				// Prepare slide title
@@ -857,10 +931,21 @@
 		// Prepare vars
 		$shult = shortcodes_ultimate();
 		$return = '';
-		$atts = shortcode_atts( array( 'gallery' => false, 'width' => 600, 'height' => 100, 'responsive' => 'yes',
-		                               'items' => 3, 'scroll' => 1, 'title' => 'yes', 'centered' => 'yes',
-		                               'arrows' => 'yes', 'pages' => 'no', 'mousewheel' => 'yes', 'autoplay' => 3000,
-		                               'speed' => 600, 'target' => 'yes', 'class' => '' ), $atts );
+		$atts = shortcode_atts( array( 'gallery' => false,
+		                               'width' => 600,
+		                               'height' => 100,
+		                               'responsive' => 'yes',
+		                               'items' => 3,
+		                               'scroll' => 1,
+		                               'title' => 'yes',
+		                               'centered' => 'yes',
+		                               'arrows' => 'yes',
+		                               'pages' => 'no',
+		                               'mousewheel' => 'yes',
+		                               'autoplay' => 3000,
+		                               'speed' => 600,
+		                               'target' => 'yes',
+		                               'class' => '' ), $atts );
 		// Prepare unique ID
 		$id = uniqid( 'su_carousel_' );
 		// Links target
@@ -878,18 +963,19 @@
 		$size = ( $atts['responsive'] === 'yes' ) ? 'width:100%'
 			: 'width:' . intVal( $atts['width'] ) . 'px;height:' . intVal( $atts['height'] ) . 'px';
 		// Slides not found
-		if ( !count( $slides ) ) $return =
+		if ( !count( $slides ) || !is_array( $slides ) ) $return =
 			'<p class="su-error">Carousel: ' . __( 'images not found', $shult->textdomain ) . '</p>';
 		// Slides are found
 		else {
 			// Open slider
-			$return .= '<div id="' . $id . '" class="su-carousel' . $centered . ' su-carousel-pages-' . $atts['pages'] .
+			$return .=
+				'<div id="' . $id . '" class="su-carousel' . $centered . ' su-carousel-pages-' . $atts['pages'] .
 				' su-carousel-responsive-' . $atts['responsive'] . su_ecssc( $atts ) . '" style="' . $size .
 				'" data-autoplay="' . $atts['autoplay'] . '" data-speed="' . $atts['speed'] . '" data-mousewheel="' .
 				$mousewheel . '" data-items="' . $atts['items'] . '" data-scroll="' .
 				$atts['scroll'] . '"><div class="su-carousel-slides">';
 			// Create slides
-			foreach ( $slides as $slide ) {
+			foreach ( (array) $slides as $slide ) {
 				// Crop the image
 				$image = su_image_resize( $slide['image'], round( $atts['width'] / $atts['items'] ), $atts['height'] );
 				// Prepare slide title
@@ -941,8 +1027,12 @@
 		// Prepare vars
 		$shult = shortcodes_ultimate();
 		$return = '';
-		$atts = shortcode_atts( array( 'gallery' => false, 'width' => 186, 'height' => 120, 'title' => 'hover',
-		                               'target' => 'yes', 'class' => '' ), $atts );
+		$atts = shortcode_atts( array( 'gallery' => false,
+		                               'width' => 186,
+		                               'height' => 120,
+		                               'title' => 'hover',
+		                               'target' => 'yes',
+		                               'class' => '' ), $atts );
 		// Links target
 		$target = ( $atts['target'] === 'yes' ) ? ' target="_blank"' : '';
 		// Prepare gallery
@@ -951,7 +1041,7 @@
 		// Prepare slides
 		$slides = ( count( ( array ) $gallery['items'] ) ) ? $gallery['items'] : array();
 		// Slides not found
-		if ( !count( $slides ) ) $return =
+		if ( !count( $slides ) || !is_array( $slides ) ) $return =
 			'<p class="su-error">Custom gallery: ' . __( 'images not found', $shult->textdomain ) . '</p>';
 		// Slides are found
 		else {
@@ -959,7 +1049,7 @@
 			$return .=
 				'<div class="su-custom-gallery su-custom-gallery-title-' . $atts['title'] . su_ecssc( $atts ) . '">';
 			// Create slides
-			foreach ( $slides as $slide ) {
+			foreach ( (array) $slides as $slide ) {
 				// Crop image
 				$image = su_image_resize( $slide['image'], $atts['width'], $atts['height'] );
 				// Prepare slide title
@@ -1005,11 +1095,20 @@
 		// Prepare error var
 		$error = null;
 		// Parse attributes
-		$atts = shortcode_atts( array( 'template' => 'templates/default-loop.php', 'id' => false,
-		                               'posts_per_page' => get_option( 'posts_per_page' ), 'post_type' => 'post',
-		                               'taxonomy' => false, 'tax_term' => false, 'tax_operator' => 'IN', 'author' => '',
-		                               'meta_key' => '', 'offset' => 0, 'order' => 'DESC', 'orderby' => 'date',
-		                               'post_parent' => false, 'post_status' => 'publish',
+		$atts = shortcode_atts( array( 'template' => 'templates/default-loop.php',
+		                               'id' => false,
+		                               'posts_per_page' => get_option( 'posts_per_page' ),
+		                               'post_type' => 'post',
+		                               'taxonomy' => false,
+		                               'tax_term' => false,
+		                               'tax_operator' => 'IN',
+		                               'author' => '',
+		                               'meta_key' => '',
+		                               'offset' => 0,
+		                               'order' => 'DESC',
+		                               'orderby' => 'date',
+		                               'post_parent' => false,
+		                               'post_status' => 'publish',
 		                               'ignore_sticky_posts' => 'no' ), $atts );
 
 		$original_atts = $atts;
@@ -1031,8 +1130,12 @@
 		$taxonomy = sanitize_key( $atts['taxonomy'] );
 
 		// Set up initial query for post
-		$args = array( 'category_name' => '', 'order' => $order, 'orderby' => $orderby,
-		               'post_type' => explode( ',', $post_type ), 'posts_per_page' => $posts_per_page, 'tag' => $tag, );
+		$args = array( 'category_name' => '',
+		               'order' => $order,
+		               'orderby' => $orderby,
+		               'post_type' => explode( ',', $post_type ),
+		               'posts_per_page' => $posts_per_page,
+		               'tag' => $tag, );
 
 		// Ignore Sticky Posts
 		if ( $ignore_sticky_posts ) $args['ignore_sticky_posts'] = true;
@@ -1055,7 +1158,14 @@
 		// Post Status
 		$post_status = explode( ', ', $post_status );
 		$validated = array();
-		$available = array( 'publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash',
+		$available = array( 'publish',
+		                    'pending',
+		                    'draft',
+		                    'auto-draft',
+		                    'future',
+		                    'private',
+		                    'inherit',
+		                    'trash',
 		                    'any' );
 		foreach ( $post_status as $unvalidated ) {
 			if ( in_array( $unvalidated, $available )
@@ -1072,8 +1182,10 @@
 			// Validate operator
 			if ( !in_array( $tax_operator, array( 'IN', 'NOT IN', 'AND' ) ) ) $tax_operator = 'IN';
 
-			$tax_args = array( 'tax_query' => array( array( 'taxonomy' => $taxonomy, 'field' => 'slug',
-			                                                'terms' => $tax_term, 'operator' => $tax_operator ) ) );
+			$tax_args = array( 'tax_query' => array( array( 'taxonomy' => $taxonomy,
+			                                                'field' => 'slug',
+			                                                'terms' => $tax_term,
+			                                                'operator' => $tax_operator ) ) );
 
 			// Check for multiple taxonomy queries
 			$count = 2;
@@ -1090,7 +1202,9 @@
 				'tax_' . $count . '_operator'] : 'IN';
 				$tax_operator = in_array( $tax_operator, array( 'IN', 'NOT IN', 'AND' ) ) ? $tax_operator : 'IN';
 
-				$tax_args['tax_query'][] = array( 'taxonomy' => $taxonomy, 'field' => 'slug', 'terms' => $terms,
+				$tax_args['tax_query'][] = array( 'taxonomy' => $taxonomy,
+				                                  'field' => 'slug',
+				                                  'terms' => $terms,
 				                                  'operator' => $tax_operator );
 
 				$count++;

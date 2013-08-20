@@ -28,15 +28,20 @@
 		// Get global plugin instance
 		global $shult;
 		// Create plugin instance
-		$shult = new Sunrise_Plugin_Framework_2( SU_PLUGIN_FILE );
+		$shult = new Sunrise_Plugin_Framework_3( SU_PLUGIN_FILE );
 		// Register settings page
-		$shult->add_options_page( array( 'link' => false ), su_plugin_options() );
+		$shult->add_options_page( array( 'parent' => 'admin.php', 'link' => false,
+		                                 'icon' => $shult->assets( 'images', 'icon.png' ),
+		                                 'sub_menu_title' => __( 'Settings', $shult->textdomain ) ),
+		                          su_plugin_options() );
 		// Translate plugin meta
 		__( 'Shortcodes Ultimate', $shult->textdomain );
 		__( 'Vladimir Anokhin', $shult->textdomain );
 		__( 'Supercharge your WordPress theme with mega pack of shortcodes', $shult->textdomain );
 		// Add links to plugins dashboard
 		add_filter( 'plugin_action_links_' . $shult->basename, 'su_plugin_actions_links', -10 );
+		// Shortcodes Ultimate is ready
+		do_action( 'shortcodes_ultimate_loaded' );
 	}
 
 	/**
