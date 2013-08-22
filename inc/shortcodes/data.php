@@ -1513,3 +1513,15 @@
 	}
 
 	add_action( 'init', 'su_register_shortcodes' );
+
+	function su_get_groups() {
+		$shult = shortcodes_ultimate();
+		$groups = array( 'all' => __( 'All', $shult->textdomain ),
+		                 'content' => __( 'Content', $shult->textdomain ),
+		                 'box' => __( 'Box', $shult->textdomain ),
+		                 'media' => __( 'Media', $shult->textdomain ),
+		                 'gallery' => __( 'Gallery', $shult->textdomain ),
+		                 'other' => __( 'Other', $shult->textdomain ) );
+		$groups = ( array ) apply_filters( 'shortcodes_ultimate_groups', $groups );
+		return $groups;
+	}

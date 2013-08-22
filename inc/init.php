@@ -30,7 +30,8 @@
 		// Create plugin instance
 		$shult = new Sunrise_Plugin_Framework_3( SU_PLUGIN_FILE );
 		// Register settings page
-		$shult->add_options_page( array( 'parent' => 'admin.php', 'link' => false,
+		$shult->add_options_page( array( 'parent' => 'admin.php',
+		                                 'link' => false,
 		                                 'icon' => $shult->assets( 'images', 'icon.png' ),
 		                                 'sub_menu_title' => __( 'Settings', $shult->textdomain ) ),
 		                          su_plugin_options() );
@@ -38,8 +39,10 @@
 		__( 'Shortcodes Ultimate', $shult->textdomain );
 		__( 'Vladimir Anokhin', $shult->textdomain );
 		__( 'Supercharge your WordPress theme with mega pack of shortcodes', $shult->textdomain );
-		// Add links to plugins dashboard
+		// Add plugin actions links
 		add_filter( 'plugin_action_links_' . $shult->basename, 'su_plugin_actions_links', -10 );
+		// Add plugin meta links
+		add_filter( 'plugin_row_meta', 'su_plugin_meta_links', 10, 2 );
 		// Shortcodes Ultimate is ready
 		do_action( 'shortcodes_ultimate_loaded' );
 	}
@@ -89,8 +92,26 @@
 	 */
 	function su_plugin_actions_links( $links ) {
 		$shult = shortcodes_ultimate();
-		$links[] = '<a href="' . $shult->admin_url . '#tab-1">' . __( 'Settings', $shult->textdomain ) . '</a>';
-		$links[] = '<a href="' . $shult->admin_url . '#tab-0"><b>' . __( 'Welcome', $shult->textdomain ) . '</b></a>';
+		$links[] =
+			'<a href="' . $shult->admin_url . '#tab-0">' . __( 'Where to start?', $shult->textdomain ) . '</a>';
+		return $links;
+	}
+
+	/**
+	 * Plugin meta links
+	 */
+	function su_plugin_meta_links( $links, $file ) {
+		global $shult;
+		// Check plugin
+		if ( $file === $shult->basename ) {
+			unset( $links[2] );
+			$links[] = '<a href="http://gndev.info/shortcodes-ultimate/" target="_blank">' .
+				__( 'Project homepage', $shult->textdomain ) . '</a>';
+			$links[] = '<a href="http://wordpress.org/support/plugin/shortcodes-ultimate/" target="_blank">' .
+				__( 'Support forum', $shult->textdomain ) . '</a>';
+			$links[] = '<a href="http://wordpress.org/extend/plugins/shortcodes-ultimate/changelog/" target="_blank">' .
+				__( 'Changelog', $shult->textdomain ) . '</a>';
+		}
 		return $links;
 	}
 
@@ -100,33 +121,46 @@
 	function su_plugin_options() {
 		$shult = shortcodes_ultimate();
 		return array( array( 'name' => __( 'About', $shult->textdomain ), 'type' => 'opentab' ),
-		              array( 'type' => 'about' ), array( 'type' => 'closetab', 'actions' => false ),
+		              array( 'type' => 'about' ),
+		              array( 'type' => 'closetab', 'actions' => false ),
 		              array( 'name' => __( 'Settings', $shult->textdomain ), 'type' => 'opentab' ),
-		              array( 'name' => __( 'Custom formatting', $shult->textdomain ), 'desc' =>
-		              __( 'Disable this option if you have some problems with other plugins or content formatting',
-		                  $shult->textdomain ) .
-		              '<br /><a href="http://support.gndev.info/docs/custom-formatting/" target="_blank">' .
-		              __( 'Documentation article', $shult->textdomain ) . '</a>', 'std' => 'on',
-		                     'id' => 'custom_formatting', 'type' => 'checkbox',
+		              array( 'name' => __( 'Custom formatting', $shult->textdomain ),
+		                     'desc' =>
+		                     __( 'Disable this option if you have some problems with other plugins or content formatting',
+		                         $shult->textdomain ) .
+		                     '<br /><a href="http://support.gndev.info/docs/custom-formatting/" target="_blank">' .
+		                     __( 'Documentation article', $shult->textdomain ) . '</a>',
+		                     'std' => 'on',
+		                     'id' => 'custom_formatting',
+		                     'type' => 'checkbox',
 		                     'label' => __( 'Enabled', $shult->textdomain ) ),
-		              array( 'name' => __( 'Compatibility mode', $shult->textdomain ), 'desc' =>
-		              __( 'Enable this option if you have some problems with other plugins that uses similar shortcode names',
-		                  $shult->textdomain ) . '<br /><code>[button] => [su_button]</code> ' .
-		              __( 'etc.', $shult->textdomain ) .
-		              '<br /><a href="http://support.gndev.info/docs/compatibility-mode/" target="_blank">' .
-		              __( 'Documentation article', $shult->textdomain ) . '</a>', 'std' => '',
-		                     'id' => 'compatibility_mode', 'type' => 'checkbox',
+		              array( 'name' => __( 'Compatibility mode', $shult->textdomain ),
+		                     'desc' =>
+		                     __( 'Enable this option if you have some problems with other plugins that uses similar shortcode names',
+		                         $shult->textdomain ) . '<br /><code>[button] => [su_button]</code> ' .
+		                     __( 'etc.', $shult->textdomain ) .
+		                     '<br /><a href="http://support.gndev.info/docs/compatibility-mode/" target="_blank">' .
+		                     __( 'Documentation article', $shult->textdomain ) . '</a>',
+		                     'std' => '',
+		                     'id' => 'compatibility_mode',
+		                     'type' => 'checkbox',
 		                     'label' => __( 'Enabled', $shult->textdomain ) ),
 		              array( 'name' => __( 'Skin', $shult->textdomain ),
 		                     'desc' => sprintf( __( 'Choose skin for shortcodes.<br /><a href="%s" target="_blank">Learn how to create custom skin</a><br /><a href="%s" target="_blank"><b>Download more skins</b></a>',
 		                                            $shult->textdomain ),
 		                                        'http://support.gndev.info/docs/create-custom-skin/',
-		                                        'http://gndev.info/shortcodes-ultimate/addons/' ), 'std' => 'default',
-		                     'id' => 'skin', 'type' => 'skin' ), array( 'type' => 'closetab' ),
+		                                        'http://gndev.info/shortcodes-ultimate/addons/' ),
+		                     'std' => 'default',
+		                     'id' => 'skin',
+		                     'type' => 'skin' ),
+		              array( 'type' => 'closetab' ),
 		              array( 'name' => __( 'Custom CSS', $shult->textdomain ), 'type' => 'opentab' ),
-		              array( 'id' => 'custom_css', 'type' => 'css' ), array( 'type' => 'closetab' ),
+		              array( 'id' => 'custom_css', 'type' => 'css' ),
+		              array( 'type' => 'closetab' ),
 		              array( 'name' => __( 'Galleries', $shult->textdomain ), 'type' => 'opentab' ),
-		              array( 'id' => 'galleries', 'type' => 'galleries' ), array( 'type' => 'closetab' ),
+		              array( 'id' => 'galleries', 'type' => 'galleries' ),
+		              array( 'type' => 'closetab' ),
 		              array( 'name' => __( 'Cheatsheet', $shult->textdomain ), 'type' => 'opentab' ),
-		              array( 'type' => 'cheatsheet' ), array( 'type' => 'closetab', 'actions' => false ), );
+		              array( 'type' => 'cheatsheet' ),
+		              array( 'type' => 'closetab', 'actions' => false ), );
 	}

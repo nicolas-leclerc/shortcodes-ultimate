@@ -11,16 +11,18 @@
 	 *
 	 * @return string
 	 */
-	function su_generator_button( $target = 'content', $text = null, $class = 'button', $icon = true, $echo = true ) {
+	function su_generator_button( $target = 'content', $text = null, $class = 'button', $icon = true, $echo = true, $shortcode = null ) {
 		$shult = shortcodes_ultimate();
 		// Prepare text
 		$text = ( is_null( $text ) ) ? __( 'Insert shortcode', $shult->textdomain ) : $text;
 		// Prepare icon
 		$icon = ( $icon ) ? '<img src="' . $shult->assets( 'images', 'generator/button.png' ) . '" alt="" /> ' : '';
+		// Prepare shortcode variable
+		$shortcode = ( is_null( $shortcode ) ) ? 'false' : $shortcode;
 		// Print button
-		$button =
-			'<a href="#su-generator" class="su-generator-button ' . $class . '" title="' . $text . '" data-target="' .
-			$target . '">' . $icon . $text . '</a>';
+		$button = '<a href="javascript:void(0);" class="su-generator-button ' . $class . '" title="' . $text .
+			'" data-target="' . $target . '" data-mfp-src="#su-generator" data-shortcode="' . $shortcode . '">' .
+			$icon . $text . '</a>';
 		// Show generator popup
 		add_action( 'wp_footer', 'su_generator_popup' );
 		add_action( 'admin_footer', 'su_generator_popup' );
@@ -63,13 +65,12 @@
 					<input type="text" name="su_generator_search" id="su-generator-search" value=""
 						placeholder="<?php _e( 'Search for shortcodes', $shult->textdomain ); ?>" />
 					<div id="su-generator-filter">
-						<strong><?php _e( 'Filter by type', $shult->textdomain ); ?></strong> <a href="#"
-							data-filter="all"><?php _e( 'All', $shult->textdomain ); ?></a> <a href="#"
-							data-filter="content"><?php _e( 'Content', $shult->textdomain ); ?></a> <a href="#"
-							data-filter="box"><?php _e( 'Boxes', $shult->textdomain ); ?></a> <a href="#"
-							data-filter="media"><?php _e( 'Media', $shult->textdomain ); ?></a> <a href="#"
-							data-filter="gallery"><?php _e( 'Gallery', $shult->textdomain ); ?></a> <a href="#"
-							data-filter="other"><?php _e( 'Other', $shult->textdomain ); ?></a>
+						<strong><?php _e( 'Filter by type', $shult->textdomain ); ?></strong>
+						<?php
+							foreach ( su_get_groups() as $group => $label ) {
+								echo '<a href="#" data-filter="' . $group . '">' . $label . '</a>';
+							}
+						?>
 					</div>
 					<div id="su-generator-choices">
 						<?php
@@ -128,7 +129,7 @@
 						// Detect array type (numbers or strings with translations)
 						$is_numbers = is_numeric( implode( '', array_keys( $attr_info['values'] ) ) ) ? true : false;
 						// Multiple selects
-						$multiple = ( $attr_info['multiple'] ) ? ' multiple' : '';
+						$multiple = ( isset( $attr_info['multiple'] ) ) ? ' multiple' : '';
 						$return .= '<select name="' . $attr_name . '" id="su-generator-attr-' . $attr_name .
 							'" class="su-generator-attr"' . $multiple . '>';
 						// Create options
@@ -234,7 +235,7 @@
 			__( 'Insert shortcode', $shult->textdomain ) .
 			'</a> <a href="#" class="button button-large" id="su-generator-preview-link">' .
 			__( 'Live preview', $shult->textdomain ) .
-			'</a> <a href="#" class="button alignright button-large" id="su-generator-cancel">' .
+			'</a> <a href="#" class="button alignright button-large su-generator-cancel">' .
 			__( 'Close window', $shult->textdomain ) . '</a></div>';
 		echo $return;
 		exit;

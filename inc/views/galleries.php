@@ -80,7 +80,6 @@
 			</div>
 			<div class="su-gallery-content">
 				<div class="su-gallery-add-image">
-					<a href="#" class="button"><?php _e( 'Add image', $this->textdomain ); ?></a>
 					<input type="file" />
 					<small class="description"><?php _e( 'Max upload file size', $this->textdomain ); ?>: <?php echo floor( wp_max_upload_size() / 1024 / 1024 ) . __( 'Mb', $this->textdomain ); ?>. <a href="http://www.wpbeginner.com/wp-tutorials/how-to-increase-the-maximum-file-upload-size-in-wordpress/" target="_blank"><?php _e( 'How to increase', $this->textdomain ); ?></a>.</small>
 				</div>

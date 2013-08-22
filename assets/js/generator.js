@@ -1,7 +1,7 @@
 jQuery( document ).ready( function ( $ ) {
 
 	// Prepare data
-	var $generator = $( '#su-generator' ), $search = $( '#su-generator-search' ), $filter = $( '#su-generator-filter' ), $filters = $filter.children( 'a' ), $choices = $( '#su-generator-choices' ), $choice = $choices.find( 'span' ), $settings = $( '#su-generator-settings' ), $button = $( '.su-generator-button' ), $cancel = $( '#su-generator-cancel' ), $insert = $( '#su-generator-insert' ), $prefix = $( '#su-compatibility-mode-prefix' ), $another = $( '#su-generator-select-another' ), $result = $( '#su-generator-result' ), $selected = $( '#su-generator-selected' ), $preview_link = $( '#su-generator-preview-link' ), mce_selection = '';
+	var $generator = $( '#su-generator' ), $search = $( '#su-generator-search' ), $filter = $( '#su-generator-filter' ), $filters = $filter.children( 'a' ), $choices = $( '#su-generator-choices' ), $choice = $choices.find( 'span' ), $settings = $( '#su-generator-settings' ), $button = $( '.su-generator-button' ), $cancel = $( '.su-generator-cancel' ), $insert = $( '#su-generator-insert' ), $prefix = $( '#su-compatibility-mode-prefix' ), $another = $( '#su-generator-select-another' ), $result = $( '#su-generator-result' ), $selected = $( '#su-generator-selected' ), $preview_link = $( '#su-generator-preview-link' ), mce_selection = '';
 
 	// Apply qTip to choices
 	$choice.each( function () {
@@ -35,14 +35,18 @@ jQuery( document ).ready( function ( $ ) {
 		e.preventDefault();
 		// Save the target
 		window.su_generator_target = $( this ).data( 'target' );
+		// Get open shortcode
+		var shortcode = $( this ).data( 'shortcode' );
 		// Open magnificPopup
 		$( this ).magnificPopup( {
 			type: 'inline',
 			alignTop: true,
 			callbacks: {
 				open: function () {
+					// Open queried shortcode
+					if ( shortcode ) $choice.filter( '[data-shortcode="' + shortcode + '"]' ).trigger( 'click' );
 					// Focus search field when popup is opened
-					window.setTimeout( function () {
+					else window.setTimeout( function () {
 						$search.focus();
 					}, 200 );
 					// Save selection
@@ -155,7 +159,7 @@ jQuery( document ).ready( function ( $ ) {
 	} );
 
 	// Click on shortcode choice
-	$choice.on( 'mousedown', function ( e ) {
+	$choice.on( 'click', function ( e ) {
 		// Prepare data
 		var shortcode = $( this ).data( 'shortcode' );
 		// Load shortcode options

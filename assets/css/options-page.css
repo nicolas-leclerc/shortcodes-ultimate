@@ -128,7 +128,6 @@
 .su-gallery-title {
 	position: relative;
 	padding: 5px 15px;
-	background: #eee;
 	color: #333;
 	border: 1px solid #dfdfdf;
 	border-radius: 5px;
@@ -241,13 +240,7 @@ input.su-gallery-name {
 	position: relative;
 	height: 60px;
 }
-.su-gallery-add-image input {
-	position: absolute;
-	left: 0;
-	top: 0;
-	filter: alpha(opacity=0);
-	opacity: 0;
-}
+.su-gallery-add-image input {}
 .su-gallery-image-uploading { background: 0 5px url('../images/galleries/loading.gif') no-repeat }
 .su-gallery-image-uploading * {
 	position: absolute;

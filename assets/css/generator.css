@@ -6,9 +6,10 @@
 
 #su-generator-wrap { display: none }
 #su-generator {
-	width: 90%;
+	position: relative;
+	width: 85%;
 	max-width: 1000px;
-	margin: 28px auto 100px auto;
+	margin: 28px auto 100px;
 	padding: 20px;
 	background: #fff;
 	-webkit-border-bottom-right-radius: 5px;
@@ -28,7 +29,6 @@
 
 /* Generator tools */
 #su-generator-tools {
-	text-align: right;
 	margin-bottom: 20px;
 }
 #su-generator-tools span {
@@ -52,16 +52,21 @@
 /* Filter box */
 #su-generator-filter {
 	margin: 0 -20px;
-	padding: 1.5em 20px;
+	padding: 14px 20px;
+	line-height: 24px;
 	background: #eee;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	color: #555;
 	text-align: center;
 }
-#su-generator-filter strong { margin: 0 1em }
-#su-generator-filter a {
+#su-generator-filter a,
+#su-generator-filter strong {
+	display: inline-block;
 	margin: 0 1em;
+	line-height: 1;
+}
+#su-generator-filter a {
 	border-bottom: 1px dotted #ccc;
 	text-decoration: none;
 }
@@ -133,7 +138,8 @@
 /* Breadcrumbs */
 #su-generator-breadcrumbs {
 	margin: 0 -20px;
-	padding: 1.5em 20px;
+	padding: 14px 20px;
+	line-height: 24px;
 	background: #eee;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
